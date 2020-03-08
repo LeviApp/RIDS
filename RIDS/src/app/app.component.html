@@ -2,16 +2,13 @@
   <section class="nav">
     <div class='top'>
     <h3>Reform in Dust Storms</h3>
-    <img class='open' src="img/nav-hamburger.png" alt="Home Image 1">
-    <img class='close' src="img/nav-hamburger-close.png" alt="Home Image 1">
     </div>
+
     <div class='bottom'>
-      <div>
-        <a href="index.html">Home</a>
-        <a href="suspect.html">Suspect</a>
-        <a href="weapon.html">Weapon</a>
-        <a href="place.html">Place</a>
-      </div>
+        <a routerLink='/home-info' routerLinkActive="active-link">ⓘ Home</a>
+        <a routerLink='/suspect-info' routerLinkActive="active-link">ⓘ Suspect</a>
+        <a routerLink='/weapon-info' routerLinkActive="active-link">ⓘ Weapon</a>
+        <a routerLink='/place-info' routerLinkActive="active-link">ⓘ Place</a>
     </div>
   </section>
   <section class="Section1">
@@ -27,3 +24,12 @@
 <div class='container'>
 <router-outlet></router-outlet>
 </div>
+
+<footer>
+  <div class="footer">
+    <div class='signup'>
+      <h3>Ready to solve the case?</h3>
+      <button>Sign Up or Log In!</button>
+    </div>
+  </div>
+</footer>

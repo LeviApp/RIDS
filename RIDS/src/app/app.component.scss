@@ -53,65 +53,35 @@ header {
     width:100%;
     .nav {
         width: 100%;
-        @include flex(column,space-between,center);
-
-    
-    .top {
         position:fixed;
-        z-index: 3;
-        @include flex(row,space-between,center);
-    padding:10px 30px;
-    background-color: #F9AD2E;
-    opacity: 0.95;
-
-    width: 100%;
-    h3 {
-        @include font(regular,2.0rem,$backgroundc,24px);
-    }
-    @media(max-width:600px) {
-        width: 100%;
-        align-self: center;
-    }
-    }
-
-    .bottom {
-        position:fixed;
-        z-index:2;
-        width: 100%;
+        top: 0;
         background-color: #F9AD2E;
-        opacity: 0.95;
-        margin-top: 45px;
-        @include flex(column,center,center);
-        display:none;
-        text-align: left;
+        padding: 20px;
+        @include flex(row,space-between,center);
+        .top {
+            @include flex(row,space-between,center);
+            opacity: 0.95;
+
+            width: 50%;
+            h3 {
+                @include font(regular,1.25rem,$backgroundc,24px);
+                font-family: Arial, Helvetica, sans-serif;
+            }
         @media(max-width:600px) {
             width: 100%;
             align-self: center;
         }
-        div {
-            @include flex(column,center,center);
-            margin-bottom: 10px;
-            a {
-                font-family: 'Kameron', serif;
-                text-decoration: none;
-                @include font(regular,3.5rem,white,5px);
-                margin:25px 0px;
-            }
-            @media(max-width:600px) {
-                @include flex(column,center,center);
-                margin-bottom: 10px;
-                width: 25%;
-            }
-
-
-
         }
-    }
-  
 
-    div {
-        @include flex(column,space-between,center);
-    }
+        .bottom {
+            width: 40%;
+            opacity: 0.95;
+            @include flex(row,space-between,center);
+            @media(max-width:600px) {
+                width: 100%;
+                align-self: center;
+            }
+        }
     }
     .Section1 {
         @include flex(column,flex-end,center);
@@ -127,7 +97,7 @@ header {
             width: 100%;
         }
         h1 {
-            @include font(bold,5rem,$backgroundc,60px);
+            @include font(bold,3.25rem,$backgroundc,60px);
             font-family: 'Kameron', serif;
             letter-spacing: 2px;
 
@@ -150,4 +120,71 @@ header {
 
 .close {
     display: none;
+}
+
+
+footer {
+    @media(max-width:600px) {
+        width: 100%;
+    }
+    @include flex(column,center,center);
+    background-color: $footerbc;
+    @include font(regular,1.4rem,$backgroundc,26px);
+    width: 100%;
+    margin-top:20px;
+    padding: 30px 0px 0px 0px;
+
+    .footer {
+        @media(max-width:600px) {
+            @include flex(column,center,center);
+    
+            width: 95%;
+        }
+        width: 85%;
+        @include flex(column,center,center);
+        .signup {
+            @include flex(column,center,center);
+            @media(max-width:600px) {    
+                width: 100%;
+                margin: 0px 0px 0px 0px;
+    
+            }
+            width: 75%;
+            margin: 0px 20px 0px 0px;
+    
+            h3 {
+                @include font(regular,1.5rem,$backgroundc,24px);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+    
+            button {
+                padding: 15px;
+                margin: 25px;
+                align-self: center;
+                background-color: white;
+                border: 2px solid white;
+                @include font(regular, 2rem,orange,24px);   
+
+            }
+    
+            button:hover {
+                color: white;
+                background-color: darkorange;
+                border: 2px solid white;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
+
+a {
+    @include font(regular,1.25rem,$backgroundc,24px);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+a.active-link {
+    color: black;
+    font-weight: bold
 }

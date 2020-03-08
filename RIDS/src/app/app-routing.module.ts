@@ -6,7 +6,7 @@ import { SuspectComponent } from './suspect/suspect.component'
 import { WeaponComponent } from './weapon/weapon.component'
 
 const routes: Routes = [
-  {path: '', component: HomeComponent },
+  {path: 'home-info', component: HomeComponent },
   {path: 'place-info', component: PlaceComponent },
   {path: 'suspect-info', component: SuspectComponent },
   {path: 'weapon-info', component: WeaponComponent },
