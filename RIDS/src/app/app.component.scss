@@ -1,0 +1,190 @@
+
+$backgroundc: #FFFFFF;
+$secondaryc: #222222;
+$footerbc: #F9AD2E;
+$tabselectbc: orange;
+$graysquarec: #D8D8D8;
+@mixin font($w,$s,$c,$h) {
+    font-weight:$w;
+    font-size:$s;
+    color:$c;
+    line-height: $h;
+}
+
+@mixin flex($direction, $justify, $align) {
+    display:flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .outer-main {
+    @include flex(column,center,center);
+    width: 100%;
+    height:100%;
+    @media(max-width:600px) {
+      width: 100%;
+      align-self: center;
+  }
+}
+
+.inner-main {
+  @media(max-width:600px) {
+    width: 100%;
+    align-self: center;
+}
+
+ @include flex(column,center,center);
+    width: 100%;
+}
+
+
+header {
+    width:100%;
+    .nav {
+        width: 100%;
+        position:fixed;
+        top: 0;
+        background-color: #F9AD2E;
+        padding: 20px;
+        @include flex(row,space-between,center);
+        .top {
+            @include flex(row,space-between,center);
+            opacity: 0.95;
+
+            width: 50%;
+            h3 {
+                @include font(regular,1.25rem,$backgroundc,24px);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        @media(max-width:600px) {
+            width: 100%;
+            align-self: center;
+        }
+        }
+
+        .bottom {
+            width: 40%;
+            opacity: 0.95;
+            @include flex(row,space-between,center);
+            @media(max-width:600px) {
+                width: 100%;
+                align-self: center;
+            }
+        }
+    }
+    .Section1 {
+        @include flex(column,flex-end,center);
+        padding: 0px 0px 40px 0;
+        width: 100%;
+        height: 90vh;
+        background: url("./img/home/RIDMain.png");
+        background-position:50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @media(max-width:600px) {
+            padding-top:50%;
+            width: 100%;
+        }
+        h1 {
+            @include font(bold,3.25rem,$backgroundc,60px);
+            font-family: 'Kameron', serif;
+            letter-spacing: 2px;
+
+            margin:0px 4%;
+            text-align: center;
+            @media(max-width:600px) {
+                margin: 0px 4%;
+                text-align: center;
+            }
+        }
+
+        
+    
+    }
+}
+
+.open {
+    display: block;
+}
+
+.close {
+    display: none;
+}
+
+
+footer {
+    @media(max-width:600px) {
+        width: 100%;
+    }
+    @include flex(column,center,center);
+    background-color: $footerbc;
+    @include font(regular,1.4rem,$backgroundc,26px);
+    width: 100%;
+    margin-top:20px;
+    padding: 30px 0px 0px 0px;
+
+    .footer {
+        @media(max-width:600px) {
+            @include flex(column,center,center);
+    
+            width: 95%;
+        }
+        width: 85%;
+        @include flex(column,center,center);
+        .signup {
+            @include flex(column,center,center);
+            @media(max-width:600px) {    
+                width: 100%;
+                margin: 0px 0px 0px 0px;
+    
+            }
+            width: 75%;
+            margin: 0px 20px 0px 0px;
+    
+            h3 {
+                @include font(regular,1.5rem,$backgroundc,24px);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+    
+            button {
+                padding: 15px;
+                margin: 25px;
+                align-self: center;
+                background-color: white;
+                border: 2px solid white;
+                @include font(regular, 2rem,orange,24px);   
+
+            }
+    
+            button:hover {
+                color: white;
+                background-color: darkorange;
+                border: 2px solid white;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
+
+a {
+    @include font(regular,1.25rem,$backgroundc,24px);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+a.active-link {
+    color: black;
+    font-weight: bold
+}
