@@ -2,15 +2,20 @@
   <section class="nav">
     <div class='top'>
     <h3>Reform in Dust Storms</h3>
-    </div>
+    <img class='down_arrow' (click)="MenuO()" src="assets/img/home/DownArrow.png" #down/>
+    <img class='up_arrow' (click)="MenuC()" src="assets/img/home/UpArrow.png" #up />
 
-    <div class='bottom'>
-        <a routerLink='/home-info' routerLinkActive="active-link">ⓘ Home</a>
-        <a routerLink='/suspect-info' routerLinkActive="active-link">ⓘ Suspect</a>
-        <a routerLink='/weapon-info' routerLinkActive="active-link">ⓘ Weapon</a>
-        <a routerLink='/place-info' routerLinkActive="active-link">ⓘ Place</a>
+    </div>
+    <div class='bottom' #bottom >
+      <a routerLink='/overview' routerLinkActive="active-link" isActive='true'>ⓘ Overview</a>
+      <a routerLink='/suspect-info' routerLinkActive="active-link">ⓘ Suspect</a>
+      <a routerLink='/weapon-info' routerLinkActive="active-link">ⓘ Weapon</a>
+      <a routerLink='/place-info' routerLinkActive="active-link">ⓘ Place</a>
+      <a routerLink='/place-info' routerLinkActive="active-link">▶ Play</a>
     </div>
   </section>
+
+
   <section class="Section1">
     <h1>
       Law, Order, Justice	In The Wild West
