@@ -24,7 +24,8 @@ $graysquarec: #D8D8D8;
 section {
     width: 85%;
     @media(max-width:600px){
-        width: 100%;   
+        width: 100%;
+         
     }
     .section-group {
         .head-text {
@@ -33,7 +34,7 @@ section {
                 @include font(bold,3.25rem,#222222,regular);
                 align-self: center;
             }
-            @include font(bold,2rem,#222222,regular);
+            @include font(bold,1.75rem,#222222,regular);
         }
     }
   
@@ -84,7 +85,7 @@ p {
             @include flex(column,space-between,flex-start);
 
             p {
-                @include font(regular,2rem,black,24px);
+                @include font(regular,1.5rem,black,30px);
             }
         }
         img {
@@ -113,7 +114,7 @@ p {
             margin-top: 20px;
             @include flex(column,space-between,flex-start);
             p {
-                @include font(regular,2rem,black,24px);
+                @include font(regular,1.5rem,black,30px);
             }
         }
         img {
@@ -150,11 +151,12 @@ p {
             @media(max-width:600px) {
                 align-self: center;
                 width: 85%;
+                margin: 0
             }
             position:relative;
             text-align:center;
             align-self: flex-end;
-            @include font(regular,3rem,black,24px);
+            @include font(regular,2.5rem,black,24px);
             padding: 20px;
             margin-right: 2%;
             background-color: $tabselectbc;
@@ -183,23 +185,24 @@ p {
         p {
             width: 100%;
             margin-bottom: 30px;
-            @include font(regular,2rem,black,24px);
+            @include font(regular,1.5rem,black,30px);
 
         }
     
     
         a {
             text-decoration: none;
-            @include font(bold,1.75rem,black,24px);
+            @include font(bold,1.5rem,black,24px);
             border: 1px solid gray;
             padding: 10px;
             width: 150px;
             text-align: center;
             @media(max-width:600px) {
-             @include font(bold,2.5rem,black,24px);
+             @include font(bold,2rem,black,24px);
                 width: 95%;
-                padding: 30px;
-                margin: 10px;    
+                padding: 20px;
+                margin: 10px;
+                align-self: center 
             }
         }
         a:hover {
