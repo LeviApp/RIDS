@@ -150,8 +150,10 @@ p {
             }
             @media(max-width:600px) {
                 align-self: center;
-                width: 85%;
-                margin: 0
+                width: 80%;
+                margin: 0;
+                @include font(regular,2rem,black,24px);
+
             }
             position:relative;
             text-align:center;
@@ -199,9 +201,8 @@ p {
             text-align: center;
             @media(max-width:600px) {
              @include font(bold,2rem,black,24px);
-                width: 95%;
+                width: 85%;
                 padding: 20px;
-                margin: 10px;
                 align-self: center 
             }
         }
