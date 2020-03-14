@@ -31,7 +31,7 @@ section {
         .head-text {
             font-family: 'Kameron', serif;
             @media(max-width:600px) {
-                @include font(bold,3.25rem,#222222,regular);
+                @include font(bold,2.5rem,#222222,regular);
                 align-self: center;
             }
             @include font(bold,1.75rem,#222222,regular);
@@ -150,8 +150,10 @@ p {
             }
             @media(max-width:600px) {
                 align-self: center;
-                width: 85%;
-                margin: 0
+                width: 80%;
+                margin: 0;
+                @include font(regular,2rem,black,24px);
+
             }
             position:relative;
             text-align:center;
@@ -199,9 +201,8 @@ p {
             text-align: center;
             @media(max-width:600px) {
              @include font(bold,2rem,black,24px);
-                width: 95%;
+                width: 85%;
                 padding: 20px;
-                margin: 10px;
                 align-self: center 
             }
         }
