@@ -107,6 +107,10 @@ export class PlaceComponent implements OnInit {
 //     }}
 //     );
 // }
+
+classes = ['Denver','Louisville','Idaho Springs', 'Cripple Creek', 'Fort Morgan'];
+index = 0;
+
 showTab(value) {
 
   for (let val of this.tabs) {
@@ -135,6 +139,44 @@ showTab(value) {
   }
 
 
+}
+
+showTabArrow(arrow) {
+  if (arrow === 'right') {
+    if (this.index === this.classes.length-1) {
+      this.index = 0
+    }
+
+    else {
+      this.index++;
+    }
+  }
+
+  else {
+    if (this.index === 0) {
+      this.index = this.classes.length-1
+    }
+
+    else {
+      this.index--;
+    }
+  }
+
+  for (let val of this.sections) {
+    if (val.nativeElement.textContent.search(this.classes[this.index]) === 0) {
+      this.renderer.removeClass(val.nativeElement,'invisible')
+      this.renderer.addClass(val.nativeElement,'visible')
+      console.log(val.nativeElement)
+    }
+
+    else {
+      this.renderer.removeClass(val.nativeElement,'visible')
+      this.renderer.addClass(val.nativeElement,'invisible')
+
+    }
+  }
+
+  
 }
 
 
