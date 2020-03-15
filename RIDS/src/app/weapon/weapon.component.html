@@ -1,1 +1,104 @@
-<p>weapon works!</p>
+
+<div class='weapon-main'>
+
+<div class='weapon-content'>
+    <section class='top-sec'>
+    
+    <div class='buttons'>
+        <img class='left-arrow' src="assets/img/cities/LeftArrow.png" (click)="showTabArrow('left')" />
+        <img class='right-arrow' src="assets/img/cities/RightArrow.png" (click)="showTabArrow('right')" />
+    </div>
+    <section class='rock visible tab' #section>
+        <div class='tab-stuff'>
+        <h3 class='head-text'>Miner's Rock</h3>
+        <img src="assets/img/weapons/RIDRock.png" alt="Pre-Construction">
+        </div>
+    </section>
+
+    <section class='gun invisible tab' #section>
+        <div class='tab-stuff'>
+        <h3 class='head-text'>Soldier's Gun</h3>
+        <img src="assets/img/weapons/RIDGun.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='knife invisible tab' #section>
+        <div class='tab-stuff'>
+        <h3 class='head-text'>Chef's Knife</h3>
+        <img class='knife' src="assets/img/weapons/RIDKnife.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='hammer invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Blacksmith's Hammer</h3>
+            <img src="assets/img/weapons/RIDHammer.png" alt="Pre-Construction">
+            </div>
+
+    </section>
+
+    <section class='rake invisible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Gardener's Rake</h3>
+            <img src="assets/img/weapons/RIDRake.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='shovel invisible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Conductor's Shovel</h3>
+            <img src="assets/img/weapons/RIDShovel.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='axe invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Woodsman's Axe</h3>
+            <img src="assets/img/weapons/RIDAxe.png" alt="Pre-Construction">
+            </div>
+
+    </section>
+
+    <section class='bottle invisible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Bartender's Bottle</h3>
+            <img class="bottle" src="assets/img/weapons/RIDBottle.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='rope invisible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Horseman's Rope</h3>
+            <img src="assets/img/weapons/RIDRope.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='bow invisible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Warrior's Bow</h3>
+            <img src="assets/img/weapons/RIDBow.png" alt="Pre-Construction">
+        </div>
+
+    </section>
+
+    <section class='weapon-nav-sec'>
+            <p class='rock weapon-nav-button clicked' (click)="showTab('Rock')" #tab href="">Rock</p>
+            <p class='gun weapon-nav-button' (click)="showTab('Gun')" #tab href="">Gun</p>
+            <p class='knife weapon-nav-button' (click)="showTab('Knife')" #tab href="">Knife</p>
+            <p class='hammer weapon-nav-button' (click)="showTab('Hammer')" #tab href="">Hammer</p>
+            <p class='rake weapon-nav-button' (click)="showTab('Rake')" #tab href="">Rake</p>
+            <p class='shovel weapon-nav-button' (click)="showTab('Shovel')" #tab href="">Shovel</p>
+            <p class='axe weapon-nav-button' (click)="showTab('Axe')" #tab href="">Axe</p>
+            <p class='bottle weapon-nav-button' (click)="showTab('Bottle')" #tab href="">Bottle</p>
+            <p class='rope weapon-nav-button' (click)="showTab('Rope')" #tab href="">Rope</p>
+            <p class='bow weapon-nav-button' (click)="showTab('Bow')" #tab href="">Bow</p>
+        </section>
+        </section>
+    </div>
+</div>
