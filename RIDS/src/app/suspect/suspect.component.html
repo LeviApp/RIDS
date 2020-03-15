@@ -1,1 +1,107 @@
-<p>suspect works!</p>
+
+<div class ='suspect-main'>
+
+<div class ='suspect-content'>
+    <section class='top-sec'>
+    <div class='buttons'>
+        <img class='left-arrow' src="assets/img/cities/LeftArrow.png" (click)="showTabArrow('left')" />
+        <img class='right-arrow' src="assets/img/cities/RightArrow.png" (click)="showTabArrow('right')" />
+    </div>
+    <section class='gender visible tab' #section>
+        <div class='tab-stuff'>
+            <h3 class='head-text'>Gender </h3>
+            <div>
+                <h4>Male  🔎 Female</h4>
+                <img class='portrait' src="assets/img/suspects/RIDGender.jpg" alt="Pre-Construction">
+
+            </div>
+        </div>
+    </section>
+
+    <section class='race invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Race</h3>
+            <div>
+            <h4> Mexican 🔎 Indian	🔎 European <br/>Chinese 🔎 African </h4>
+            <img class='recolored portrait' src="assets/img/suspects/RIDRace.jpg" alt="Pre-Construction">
+            </div>
+            </div>
+    </section>
+
+    <section class='height invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Height</h3>
+            <div>
+            <h4> Short 🔎 Average 🔎 Tall </h4>
+            <img class='recolored' src="assets/img/suspects/RIDHeight.jpg" alt="Pre-Construction">
+            </div>
+            </div>
+    </section>
+
+    <section class='weight invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Weight</h3>
+            <div>
+            <h4>Thin 🔎 Average	🔎 Heavy</h4>
+            <img class='recolored portrait' src="assets/img/suspects/RIDWeight.jpg" alt="Pre-Construction">
+            </div>
+            </div>
+    </section>
+
+    <section class='age invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Age</h3>
+            <div>
+            <h4>Young 🔎 Middle-Aged 🔎 Old </h4>
+            <img class='recolored' src="assets/img/suspects/RIDAge.png" alt="Pre-Construction">
+
+            </div>
+            </div>
+    </section>
+
+    <section class='hair invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Hair Color</h3>
+            <div>
+                <h4>Black 🔎 Gray 🔎 Brown <br/> Blond 🔎 Red</h4>
+                <img src="assets/img/suspects/RIDHairColor.jpg" alt="Pre-Construction">
+            </div>
+
+            </div>
+    </section>
+
+    <section class='face invisible tab' #section>
+            <div class='tab-stuff'>
+            <h3 class='head-text'>Face Feature</h3>
+
+            <div>
+                <h4> Ears 🔎 Eyebrows 🔎 Nose 🔎 Mouth </h4>
+                <img class='recolored' src="assets/img/suspects/RIDFace.jpg" alt="Pre-Construction">
+            </div>
+            </div>
+    </section>
+
+    <section class='unique invisible tab' #section>
+            <div class='tab-stuff'>
+                <h3 class='head-text'>Unique Feature</h3>
+            <div>
+            <h4> Scar 🔎 Glasses 🔎 Limp <br/> Missing Teeth 🔎 Mole </h4>
+            <img class='portrait'src="assets/img/suspects/RIDUnique.jpg" alt="Pre-Construction">
+            </div>
+
+            </div>
+    </section>
+    </section>
+    <section class='suspect-nav-sec'>
+            <p class='gender suspect-nav-button clicked' (click)="showTab('Gender')" #tab href="">Gender</p>
+            <p class='race suspect-nav-button' (click)="showTab('Race')" #tab href="">Race</p>
+            <p class='height suspect-nav-button' (click)="showTab('Height')" #tab href="">Height</p>
+            <p class='weight suspect-nav-button' (click)="showTab('Weight')" #tab href="">Weight</p>
+            <p class='age suspect-nav-button' (click)="showTab('Age')" #tab href="">Age</p>
+            <p class='hair suspect-nav-button' (click)="showTab('Hair Color')" #tab href="">Hair Color</p>
+            <p class='face suspect-nav-button' (click)="showTab('Face Feature')" #tab href="">Face Feature</p>
+            <p class='unique suspect-nav-button' (click)="showTab('Unique Feature')" #tab href="">Unique Feature</p>
+    </section>
+
+    </div>
+</div>
