@@ -58,6 +58,8 @@ header {
         top: 0;
         background-color: #F9AD2E;
         padding: 20px;
+        z-index: 10;
+
         @include flex(row,space-between,center);
         .top {
             @include flex(row,space-between,center);

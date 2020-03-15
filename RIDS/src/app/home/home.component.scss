@@ -55,7 +55,7 @@ p {
 
     display: flex;
     width: 95%;
-
+    z-index: 0;
     @media(max-width: 950px){
         @include flex(column,center,center);
     }
@@ -90,7 +90,7 @@ p {
         }
         img {
             @media(max-width:600px) {
-                width: 95%;
+                width: 90%;
                 margin-bottom: 20px;
             }
             width: 80%;
@@ -138,12 +138,12 @@ p {
         img {
             margin-top: 20px;
             position:relative;
-            z-index: -1;
+            z-index: 0;
             width:100%;
         }
         h2 {
             font-family: 'Kameron', serif;
-            z-index: -1;
+            z-index: 0;
 
             @media(max-width:950px) {
                 align-self: center;

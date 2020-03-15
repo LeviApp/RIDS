@@ -1,0 +1,229 @@
+
+
+$backgroundc: #FFFFFF;
+$secondaryc: #222222;
+$footerbc: #F9AD2E;
+$tabselectbc: orange;
+$graysquarec: #D8D8D8;
+@mixin font($w,$s,$c,$h) {
+    font-weight:$w;
+    font-size:$s;
+    color:$c;
+    line-height: $h;
+}
+
+@mixin flex($direction, $justify, $align) {
+    display:flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.suspect-main {
+    @include flex(column,center,center);
+}
+
+.suspect-content {
+    @include flex(column,center,space-between);
+    .top-sec {
+        @include flex(column,center,center);
+        z-index: 0;
+        @media screen and (max-width:600px) {
+            @include flex(column,center,center);
+            margin: 0;
+            display: flex;
+            width: 100%;
+            position: relative;
+
+        }
+        .buttons {
+            @media screen and (max-width:600px) {
+                @include flex(row,space-between,center);
+                width: 100%;
+                margin: 0;
+                position: absolute;
+                bottom: 5%;
+
+            } 
+            .left-arrow {
+                display: none;
+                @media screen and (max-width:600px) {
+                    display: flex;
+                    @include font(regular,15rem,blue ,75%);
+                    z-index: 2;
+                    opacity: 0.5;
+                    background-color: transparent;
+                    border: 0;
+                    padding: 0;
+                    margin-left: 5%;
+                    top: 50px;
+                    width: 20%;
+
+                }   
+            }
+    
+            .right-arrow {
+                display: none;
+                @media screen and (max-width:600px) {
+                    display: flex;    
+                    @include font(regular,15rem,blue ,75%);
+                    z-index: 2;
+                    opacity: 0.5;
+                    margin: 0;
+                    background-color: transparent;
+                    border: 0;
+                    padding: 0;
+                    margin-right: 5%;
+                    width: 20%;
+
+                }   
+            }
+        }
+
+        .tab {
+            width:100%;
+            margin-top: 20px;
+            @media screen and (max-width:600px) {
+                width: 100%;
+                grid-row: 1/ span 4;
+                grid-column: 1/ span 3;
+                z-index: 0;
+                margin-top: 0px;
+
+            }
+            .tab-stuff {
+                @include flex(row,center, flex-start);
+               width:100%;
+               margin: 0px 2%;
+               @media screen and (max-width:600px) {
+                @include flex(column,center, center);
+                margin: 0
+            }
+    
+                .head-text {
+                    font-family: 'Kameron', serif;
+                    @include font(bold,2.25rem,#222222,regular);
+                    letter-spacing: 4px;
+
+                    margin-top: 5px;
+    
+                    @media screen and (max-width:600px) {
+                        @include font(bold,2.75rem,black,40px);
+                        text-align: center;
+                        padding: 30px;
+                    }
+                }
+                p {
+                    margin:10px 20px 10px 0px;
+                    @include font(regular,1.75rem,black,regular);
+        
+                    @media screen and (max-width:600px) {
+                        @include font(regular,2.25rem,black,regular);
+                    }
+                }
+                div {
+                    width: 75%;
+                    z-index: 0;
+                    @include flex(column, flex-start, center);
+                    @media screen and (max-width:600px) {
+                        align-self: center;
+                        width: 95%;
+    
+                    }
+                    h4 {
+                        @include font(regular,1.5rem,black, 40px);
+
+                        text-align: center;
+                        margin-bottom: 15px;
+                        @media screen and (max-width:600px) {
+                            @include font(regular,2rem,black,50px);
+                            width: 100%;
+                            flex-wrap: wrap;
+                            text-align: center;
+                            height: auto;
+                        }
+                    }
+                }
+                img {
+                    height: 55vh;
+                    padding-bottom: 20px;
+                    @media screen and (max-width: 950px) {
+                        width: 95%;
+                        height: auto;
+                    }
+                    @media screen and (max-width:600px) {
+                        width: 95%;
+                        height: auto;
+                        padding-bottom: 10px;
+                    }
+                }
+    
+    
+            }
+        }
+    }
+    .suspect-nav-sec {
+        width:100%;
+        @media screen and (max-width:600px) {
+            display: none;
+            width: 95%;
+            text-align: center;
+        }
+        align-self: center;
+        
+        @include flex(row,center,space-between);
+        flex-wrap: wrap;
+        .suspect-nav-button {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid black;
+            margin: 10px;
+            @include font(regular,2rem,black,regular);
+            @media screen and (max-width: 950px) {
+                @include font(regular,3rem,black,regular);
+                padding: 20px;
+            }
+            @media screen and (max-width:600px) {
+                padding: 15px 2%;
+
+                margin: 5px 0px;
+                width: 100%;
+                @include font(regular,4rem,black,regular);
+
+            }
+        }
+        .clicked {
+            background-color: $tabselectbc;
+            color:white;
+            cursor: default;
+        }
+        p {
+            @include font(regular,1.75rem,black,regular);
+    
+            @media screen and (max-width:600px) {
+                @include font(regular,2.25rem,black,regular);
+                width: 100%;
+            }
+        }
+    }
+    
+  
+    
+    .visible {
+        @include flex(row,space-between,center);
+        @media screen and (max-width:600px){
+            width: 100%;
+            @include flex(column,center,center);
+    
+        }
+    }
+    
+    .invisible {
+        display:none;
+    }
+    
+}
+
+.recolored {
+    filter: sepia(100%) saturate(200%) hue-rotate(-20deg)
+}
