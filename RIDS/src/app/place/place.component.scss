@@ -57,8 +57,8 @@ $graysquarec: #D8D8D8;
                     background-color: transparent;
                     border: 0;
                     padding: 0;
-                    margin-left: 5%;
                     top: 50px;
+                    margin-left: 5%;
                     width: 20%;
 
                 }   
@@ -115,8 +115,7 @@ $graysquarec: #D8D8D8;
                     @media only screen and (max-width:600px) {
                         @include font(bold,2rem,black,40px);
                         text-align: center;
-                        padding: 10px;
-                        padding: 30px;
+                        padding: 10px 0px;
                     }
                 }
                 div {
@@ -138,7 +137,7 @@ $graysquarec: #D8D8D8;
                         @include font(regular,2rem,darkorange,regular);
                         margin-top: 20px;
                         @media only screen and (max-width:600px) {
-                            @include font(regular,2rem,darkorange,regular);
+                            @include font(regular,1.75rem,darkorange,regular);
                             text-align: center;
                             margin: 0
 
