@@ -108,7 +108,7 @@ $graysquarec: #D8D8D8;
                     margin-top: 5px;
     
                     @media screen and (max-width:600px) {
-                        @include font(bold,2.75rem,black,40px);
+                        @include font(bold,2rem,black,40px);
                         text-align: center;
                         padding: 30px;
                     }
@@ -118,7 +118,7 @@ $graysquarec: #D8D8D8;
                     @include font(regular,1.75rem,black,regular);
         
                     @media screen and (max-width:600px) {
-                        @include font(regular,2.25rem,black,regular);
+                        @include font(regular,1.5rem,black,regular);
                     }
                 }
                 div {
@@ -201,7 +201,7 @@ $graysquarec: #D8D8D8;
             @include font(regular,1.75rem,black,regular);
     
             @media screen and (max-width:600px) {
-                @include font(regular,2.25rem,black,regular);
+                @include font(regular,1.5rem,black,regular);
                 width: 100%;
             }
         }

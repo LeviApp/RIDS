@@ -135,6 +135,8 @@ header {
             @media(max-width:600px) {
                 margin: 0px 4%;
                 text-align: center;
+                @include font(bold, 2.5rem,$backgroundc,60px);
+
             }
         }
 
