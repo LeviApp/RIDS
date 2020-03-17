@@ -81,7 +81,7 @@ $graysquarec: #D8D8D8;
         }
 
         .tab {
-            width:100%;
+            width: 90%;
             margin-top: 20px;
             @media screen and (max-width:600px) {
                 width: 100%;
@@ -118,7 +118,7 @@ $graysquarec: #D8D8D8;
                     @include font(regular,1.75rem,black,regular);
         
                     @media screen and (max-width:600px) {
-                        @include font(regular,1.5rem,black,regular);
+                        @include font(regular,1rem,black,regular);
                     }
                 }
                 div {
@@ -136,7 +136,7 @@ $graysquarec: #D8D8D8;
                         text-align: center;
                         margin-bottom: 15px;
                         @media screen and (max-width:600px) {
-                            @include font(regular,1.5rem,black,50px);
+                            @include font(regular,1rem,black,50px);
                             width: 90%;
                             flex-wrap: wrap;
                             text-align: center;
@@ -180,7 +180,6 @@ $graysquarec: #D8D8D8;
             margin: 10px;
             @include font(regular,2rem,black,regular);
             @media screen and (max-width: 950px) {
-                @include font(regular,3rem,black,regular);
                 padding: 20px;
             }
             @media screen and (max-width:600px) {
