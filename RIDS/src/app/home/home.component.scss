@@ -43,7 +43,7 @@ section {
 p {
     @media(max-width:600px) {
         width:100%;
-        @include font(regular,1.5rem,black,30px);
+        @include font(regular,1.25rem,black,30px);
 
     }
     @include font(regular,1.6rem,black,24px);
@@ -86,6 +86,9 @@ p {
 
             p {
                 @include font(regular,1.5rem,black,30px);
+                @media(max-width:600px) {
+                    @include font(regular,1.25rem,black,30px);
+                }
             }
         }
         img {
@@ -115,6 +118,9 @@ p {
             @include flex(column,space-between,flex-start);
             p {
                 @include font(regular,1.5rem,black,30px);
+                @media(max-width:600px) {
+                    @include font(regular,1.25rem,black,30px);
+                }
             }
         }
         img {
@@ -188,7 +194,9 @@ p {
             width: 100%;
             margin-bottom: 30px;
             @include font(regular,1.5rem,black,30px);
-
+            @media(max-width:600px) {
+                @include font(regular,1.25rem,black,30px);
+            }
         }
     
     
