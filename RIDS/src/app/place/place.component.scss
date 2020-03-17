@@ -113,7 +113,7 @@ $graysquarec: #D8D8D8;
                         @include font(bold,2.75rem,#222222,regular);
                     }
                     @media only screen and (max-width:600px) {
-                        @include font(bold,2.75rem,black,40px);
+                        @include font(bold,2rem,black,40px);
                         text-align: center;
                         padding: 10px;
                         padding: 30px;
@@ -138,7 +138,7 @@ $graysquarec: #D8D8D8;
                         @include font(regular,2rem,darkorange,regular);
                         margin-top: 20px;
                         @media only screen and (max-width:600px) {
-                            @include font(regular,2.5rem,darkorange,regular);
+                            @include font(regular,2rem,darkorange,regular);
                             text-align: center;
                             margin: 0
 

@@ -31,7 +31,7 @@ section {
         .head-text {
             font-family: 'Kameron', serif;
             @media(max-width:600px) {
-                @include font(bold,2.5rem,#222222,regular);
+                @include font(bold,2rem,#222222,regular);
                 align-self: center;
             }
             @include font(bold,1.75rem,#222222,regular);
@@ -43,7 +43,7 @@ section {
 p {
     @media(max-width:600px) {
         width:100%;
-        @include font(regular,2.25rem,black,30px);
+        @include font(regular,1.5rem,black,30px);
 
     }
     @include font(regular,1.6rem,black,24px);
