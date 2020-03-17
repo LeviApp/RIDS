@@ -118,7 +118,7 @@ $graysquarec: #D8D8D8;
                     @include font(regular,1.75rem,black,regular);
         
                     @media screen and (max-width:600px) {
-                        @include font(regular,1rem,black,regular);
+                        @include font(regular,1.25rem,black,regular);
                     }
                 }
                 div {
