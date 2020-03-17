@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { WeaponComponent } from './weapon/weapon.component';
 import { SuspectComponent } from './suspect/suspect.component';
 import { PlaceComponent } from './place/place.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PlaceComponent } from './place/place.component';
     HomeComponent,
     WeaponComponent,
     SuspectComponent,
-    PlaceComponent
+    PlaceComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
