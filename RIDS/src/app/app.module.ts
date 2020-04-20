@@ -8,7 +8,8 @@ import { WeaponComponent } from './weapon/weapon.component';
 import { SuspectComponent } from './suspect/suspect.component';
 import { PlaceComponent } from './place/place.component';
 import { GameComponent } from './game/game.component';
-
+import {AUTH_PROVIDERS} from 'angular2-jwt'
+import {AuthService} from './auth.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { GameComponent } from './game/game.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AUTH_PROVIDERS, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

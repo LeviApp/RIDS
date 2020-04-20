@@ -11,7 +11,9 @@
       <a routerLink='/suspect-info' routerLinkActive="active-link">ⓘ Suspect</a>
       <a routerLink='/weapon-info' routerLinkActive="active-link">ⓘ Weapon</a>
       <a routerLink='/place-info' routerLinkActive="active-link">ⓘ Place</a>
-      <a routerLink='/game' routerLinkActive="active-link">▶ Play</a>
+      <a routerLink='/game' routerLinkActive="active-link" (click)="auth.login()" *ngIf="!auth.loggedIn">▶ Play</a>
+      <a routerLink='/game' routerLinkActive="active-link" *ngIf="auth.loggedIn">▶ Play</a>
+
     </div>
   </section>
 
@@ -35,8 +37,11 @@
 <footer>
   <div class="footer">
     <div class='signup'>
-      <h3>Ready to solve the case?</h3>
-      <button>Sign Up or Log In!</button>
+      <h3 *ngIf="!auth.loggedIn">Ready to solve the case?</h3>
+      <button (click)="auth.login()" *ngIf="!auth.loggedIn">Sign Up or Log In!</button>
+      <h3 *ngIf="auth.loggedIn">Ready to call it a day?</h3>
+      <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+
     </div>
   </div>
 </footer>
