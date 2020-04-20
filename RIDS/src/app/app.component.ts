@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
+import {AuthService} from './auth.service'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'RIDS';
 
 
-  constructor () {}
+  constructor (public auth: AuthService) {}
 
   @ViewChild('bottom') bott;
   @ViewChild('down') dArrow;
