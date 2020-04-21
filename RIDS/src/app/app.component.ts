@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import {AuthService} from './auth.service'
-
+import auth0 from '@auth0/auth0-spa-js'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +8,12 @@ import {AuthService} from './auth.service'
 })
 export class AppComponent implements OnInit {
   title = 'RIDS';
+  profileJson: object = null;
 
 
-  constructor (public auth: AuthService) {}
+  constructor (public auth: AuthService) {
+    
+  }
 
   @ViewChild('bottom') bott;
   @ViewChild('down') dArrow;
@@ -19,17 +22,22 @@ export class AppComponent implements OnInit {
   imageDown: any = document.querySelector('.down_arrow');
   imageUp: any = document.querySelector('.up_arrow');
 
+
   ngOnInit() {
-
+    this.auth.userProfile$.subscribe(
+      profile => {this.profileJson = profile}
+    );
   }
-
-
   MenuO() {
     this.bott.nativeElement.classList.add('open')
     this.dArrow.nativeElement.style.display = "none"
     this.uArrow.nativeElement.style.display = "block"
 
     console.log(this.bott.nativeElement)
+}
+
+getID() {
+  console.log('hello you!', this.profileJson['identities']['user_id'])
 }
 
 MenuC () {
