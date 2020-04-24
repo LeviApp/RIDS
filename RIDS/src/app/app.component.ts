@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 }
 
 getID() {
-  console.log('hello you!', this.profileJson['identities']['user_id'])
+  console.log('hello you!', this.profileJson)
 }
 
 MenuC () {
