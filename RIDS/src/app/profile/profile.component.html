@@ -1,4 +1,50 @@
-<div class=profile>
+<div class="profile">
     <h3 *ngIf="auth.userProfile$ | async as profile">{{profile.name}}</h3>
-    <button>Add Character</button>
+    <button (click)="addCharacter()">Add Character</button>
+    <div class="add" #char>
+        <div>
+            <h4 class="boy">Cowboy</h4>
+            <h4 class="girl">Cowgirl</h4>
+        </div>
+        <div>
+            <h5>Rank:</h5>
+            <input type="text">
+        </div>
+        <div>
+            <h5>Name:</h5>
+            <input type="text" />
+        </div>
+        <div>
+            <h5>Description:</h5>
+            <textarea type="text"></textarea>
+        </div>
+        <div>
+            <h5>Question Suspect:</h5>
+            <input type="text" />
+        </div>
+        <div>
+            <h5>Question Place:</h5>
+            <input type="text" />
+        </div>
+        <div>
+            <h5>Question Weapon:</h5>
+            <input type="text" />
+        </div>
+        <div>
+            <h5>Goodbye:</h5>
+            <input type="text" />
+        </div>
+    </div>
 </div>
+
+<!-- {
+    "rank": "Deputy",
+    "name": "Jim Carson",
+    "description": "My name is Carson, Jim Carson. I am a tall, young man with hair as black as night. I can handle myself in a fight, and can outdraw any outlaw. I wear the badge proudly as I seek to bring reform in the middle of a barren dust storm called the West, the Wild West.",
+    "question_suspect": "What does the suspect look like?",
+    "question_place": "Do you remember where the crime took place?",
+    "question_weapon": "Did you see what kind of weapon the suspect had?",
+    "goodbye": "Have a wonderful day!",
+    "place_id": 1,
+    "city_id": 1
+} -->
