@@ -12,6 +12,7 @@ import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {AuthService} from './auth.service';
 import {GameService} from './game.service';
 import {HttpClientModule} from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
     WeaponComponent,
     SuspectComponent,
     PlaceComponent,
-    GameComponent
+    GameComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
