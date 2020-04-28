@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {AuthService} from '../auth.service'
 
 @Component({
@@ -8,6 +8,7 @@ import {AuthService} from '../auth.service'
 })
 export class ProfileComponent implements OnInit {
   profileJson: object = null;
+  @ViewChild('char') character;
 
   constructor (public auth: AuthService) {
     
@@ -17,5 +18,14 @@ export class ProfileComponent implements OnInit {
       profile => {this.profileJson = profile}
     );
   }
+
+  addCharacter() {
+    if (this.character.nativeElement.style.display === "none") {
+      this.character.nativeElement.style.display = "flex"
+    }
+    else {
+      this.character.nativeElement.style.display = "none"
+    }
+}
 
 }
