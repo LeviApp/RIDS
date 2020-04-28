@@ -1,1 +1,4 @@
-<p *ngIf="auth.userProfile$ | async as profile">{{profile | json}}</p>
+<div class=profile>
+    <h3 *ngIf="auth.userProfile$ | async as profile">{{profile.name}}</h3>
+    <button>Add Character</button>
+</div>
