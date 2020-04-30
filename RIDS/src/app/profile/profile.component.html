@@ -8,29 +8,29 @@
         </div>
         <div class='char-form'>
             <h5>Name:</h5>
-            <input type="text" value="{{name}}"/>
+            <input type="text" value="{{name}}" #nameI/>
         </div>
         <div class='char-form'>
             <h5>Description:</h5>
-            <textarea type="text" rows='5' value="{{description}}"></textarea>
+            <textarea type="text" rows='5' value="{{description}}" #descriptionI></textarea>
         </div>
         <div class='char-form'>
             <h5>Question Suspect:</h5>
-            <input type="text" value="What does the suspect look like?" />
+            <input type="text" value="What does the suspect look like?" #qsI />
         </div>
         <div class='char-form'>
             <h5>Question Place:</h5>
-            <input type="text" value="Do you remember where the crime took place?"/>
+            <input type="text" value="Do you remember where the crime took place?" #qpI/>
         </div>
         <div class='char-form'>
             <h5>Question Weapon:</h5>
-            <input type="text" value="Did you notice if the suspect had a weapon?" />
+            <input type="text" value="Did you notice if the suspect had a weapon?" #qwI />
         </div>
         <div class='char-form'>
             <h5>Goodbye:</h5>
-            <input type="text" value="Have a wonderful day!" />
+            <input type="text" value="Have a wonderful day!" #goodbyeI />
         </div>
-        <button class='deputize'>★ Deputize!</button>
+        <button class='deputize' (click)='values()'>★ Deputize!</button>
     </div>
 </div>
 
