@@ -1,14 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild  } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {City} from './game'
+import {City, PostPlayer, Player} from './game'
 import {Observable} from 'rxjs/Observable'
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  private _url: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/cities/'
+  @ViewChild('nameI') nameI;
+  @ViewChild('descriptionI') descriptionI;
+  @ViewChild('qsI') qsI;
+  @ViewChild('qpI') qpI;
+  @ViewChild('qwI') qwI;
+  @ViewChild('goodbyeI') goodbyeI;
+
+  private _cityurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/cities/';
+  private _playerurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/players/';
   constructor(private http: HttpClient) { }
   getCities(): Observable<City[]> {
-    return this.http.get<City[]>(this._url)
+    return this.http.get<City[]>(this._cityurl)
+  }
+  getPlayers(): Observable<Player[]> {
+    return this.http.get<Player[]>(this._playerurl)
+  }
+  addPlayer(playerD: PostPlayer) {
+    return this.http.post(this._playerurl, playerD)
   }
 }
