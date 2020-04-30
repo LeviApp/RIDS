@@ -3,32 +3,32 @@
     <button (click)="addCharacter()">Add Character</button>
     <div class="add" #char>
         <div>
-            <h4 class="boy">Cowboy</h4>
-            <h4 class="girl">Cowgirl</h4>
+            <h4 class="boy" (click)="who('boy')" #boy>Cowboy</h4>
+            <h4 class="girl" (click)="who('girl')" #girl>Cowgirl</h4>
         </div>
         <div class='char-form'>
             <h5>Name:</h5>
-            <input type="text" />
+            <input type="text" value="{{name}}"/>
         </div>
         <div class='char-form'>
             <h5>Description:</h5>
-            <textarea type="text" rows='5'></textarea>
+            <textarea type="text" rows='5' value="{{description}}"></textarea>
         </div>
         <div class='char-form'>
             <h5>Question Suspect:</h5>
-            <input type="text" />
+            <input type="text" value="What does the suspect look like?" />
         </div>
         <div class='char-form'>
             <h5>Question Place:</h5>
-            <input type="text" />
+            <input type="text" value="Do you remember where the crime took place?"/>
         </div>
         <div class='char-form'>
             <h5>Question Weapon:</h5>
-            <input type="text" />
+            <input type="text" value="Did you notice if the suspect had a weapon?" />
         </div>
         <div class='char-form'>
             <h5>Goodbye:</h5>
-            <input type="text" />
+            <input type="text" value="Have a wonderful day!" />
         </div>
         <button class='deputize'>★ Deputize!</button>
     </div>
