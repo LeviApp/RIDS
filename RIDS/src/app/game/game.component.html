@@ -1,4 +1,12 @@
-    <profile class='pro'></profile>
+    <div class='char-contain'>
+      <profile class='pro'></profile>
+      <div>
+        <div class='character' *ngFor="let player of players">
+          <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
+          <h1>{{player.name}}</h1>
+        </div>
+      </div>
+    </div>
     <div class="sketch-container">
         <div id="sketch-holder"></div>
       </div>

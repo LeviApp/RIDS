@@ -9,12 +9,16 @@ import * as p5 from 'p5';
 })
 export class GameComponent implements OnInit {
   public cities = [];
+  public players = [];
+
   private p5;
   constructor(private _gameService: GameService ) { }
 
   ngOnInit() {
   
     this._gameService.getCities().subscribe(data => this.cities = data)
+    this._gameService.getPlayers().subscribe(data => this.players = data)
+
     console.log(this.cities)
     const sketch = (s) => {
       let x = 1;
