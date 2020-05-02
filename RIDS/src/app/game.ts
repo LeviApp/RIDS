@@ -11,7 +11,7 @@ export class PostPlayer {
     rank: string;
     name: string;
     description: string;
-    question_subject: string;
+    question_suspect: string;
     question_place: string;
     question_weapon: string;
     goodbye: string;
@@ -25,7 +25,7 @@ export interface Player {
     rank: string;
     name: string;
     description: string;
-    question_subject: string;
+    question_suspect: string;
     question_place: string;
     question_weapon: string;
     goodbye: string;
