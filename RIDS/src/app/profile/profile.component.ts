@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   description: string = '';
   playerReq: PostPlayer;
   playerRes: Player;
-  characters: [];
+  characters: object[] = [];
 
   constructor (public auth: AuthService, public gameService: GameService) {
     
@@ -58,13 +58,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  postCharacter() {
+  postCharacter(token) {
     this.playerReq = new PostPlayer();
-    this.playerReq.user_id = "00000";
+    this.playerReq.user_id = token;
     this.playerReq.rank = "Deputy";
     this.playerReq.name = this.nameI.nativeElement.value;
     this.playerReq.description = this.descriptionI.nativeElement.value;
-    this.playerReq.question_subject = this.qsI.nativeElement.value;
+    this.playerReq.question_suspect = this.qsI.nativeElement.value;
     this.playerReq.question_place = this.qpI.nativeElement.value;
     this.playerReq.question_weapon = this.qwI.nativeElement.value;
     this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
@@ -72,9 +72,8 @@ export class ProfileComponent implements OnInit {
     this.playerReq.city_id = 1;
     this.gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
       this.playerRes = res;
-      this.characters.push(this.playerRes)
+      this.characters = [...this.characters, this.playerRes]
     })
-    console.log(this.nameI.nativeElement.value)
 
   }
   addCharacter() {

@@ -30,7 +30,7 @@
             <h5>Goodbye:</h5>
             <input type="text" value="Have a wonderful day!" #goodbyeI />
         </div>
-        <button class='deputize' (click)='values()'>★ Deputize!</button>
+        <button class='deputize' *ngIf="auth.userProfile$ | async as profile" (click)='postCharacter(profile.sub.substr(6))'>★ Deputize!</button>
     </div>
 </div>
 
