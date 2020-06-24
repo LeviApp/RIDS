@@ -31,20 +31,31 @@
             background-color: peru;
             margin: 10px;
             width: 20vw;
-            img {
-                object-fit: cover;
-                object-position: center top;
-                width: 20vw;
-                height: 20vw;
+            button {
+                background-color: peru;
+
+                img {
+                    object-fit: cover;
+                    object-position: center top;
+                    width: 20vw;
+                    height: 20vw;
+                }
+                h1 {
+                    background: transparent;
+                    text-align: center
+                }
+                p {
+                    font-size: 1.25rem;
+                    margin: 10px;
+                }
+
             }
-            h1 {
-                background: transparent;
-                text-align: center
-            }
-            p {
-                font-size: 1.25rem;
-                margin: 10px;
-            }
+
+        button:hover {
+            background-color: green;
+            cursor: pointer;
+        }
         }
     }
 }
+

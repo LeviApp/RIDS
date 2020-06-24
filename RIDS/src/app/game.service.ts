@@ -1,5 +1,5 @@
 import { Injectable, ViewChild  } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {City, PostPlayer, Player} from './game'
 import {Observable} from 'rxjs/Observable'
 @Injectable({
@@ -19,8 +19,9 @@ export class GameService {
   getCities(): Observable<City[]> {
     return this.http.get<City[]>(this._cityurl)
   }
-  getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this._playerurl)
+  getPlayers(userID): Observable<Player[]> {
+    let params_id = new HttpParams().set('user_id', userID)
+    return this.http.get<Player[]>(this._playerurl, { params: params_id})
   }
   addPlayer(playerD: PostPlayer) {
     return this.http.post(this._playerurl, playerD)

@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
       this.girl.nativeElement.style.backgroundColor = "white"
       this.girl.nativeElement.style.color = "orange"
       this.girl.nativeElement.style.border = "2px solid black"
+      console.log(this.profileJson)
     }
     else {
       this.name = "Melanie Brooks"
