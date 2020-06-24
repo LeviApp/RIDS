@@ -13,6 +13,7 @@ import {AuthService} from './auth.service';
 import {GameService} from './game.service';
 import {HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import { MapComponent } from './map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
     SuspectComponent,
     PlaceComponent,
     GameComponent,
-    ProfileComponent
+    ProfileComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

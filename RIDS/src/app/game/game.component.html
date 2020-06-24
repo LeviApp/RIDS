@@ -1,12 +1,15 @@
     <div class='char-contain'>
       <profile class='pro'></profile>
-      <div>
+      <div id='field' #file>
         <div class='character' *ngFor="let player of players">
-          <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
+          <button (click)='showMap()' class='btn'>
+            <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
           <h1>{{player.name}}</h1>
+          </button>
+
         </div>
       </div>
+      <map class='map' #map></map>
+
     </div>
-    <div class="sketch-container">
-        <div id="sketch-holder"></div>
-      </div>
+

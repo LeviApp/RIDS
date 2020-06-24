@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {GameService} from '../game.service';
+import {AuthService} from '../auth.service'
+
 import * as p5 from 'p5';
 
 @Component({
@@ -7,39 +9,32 @@ import * as p5 from 'p5';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, AfterViewInit {
   public cities = [];
   public players = [];
-
+  public map;
+  @ViewChild('file') file;
+  profileJson: object = null;
   private p5;
-  constructor(private _gameService: GameService ) { }
+  constructor(private _gameService: GameService, public auth: AuthService ) { }
+
 
   ngOnInit() {
+
+      this.auth.userProfile$.subscribe(
+        profile => {this.profileJson = profile}
+      );
   
-    this._gameService.getCities().subscribe(data => this.cities = data)
-    this._gameService.getPlayers().subscribe(data => this.players = data)
+    this._gameService.getPlayers('this.profileJson.sub.substr(6)').subscribe(data => this.players = data)
 
-    console.log(this.cities)
-    const sketch = (s) => {
-      let x = 1;
-      s.preload = () => {
-        // preload code
-      }
+  }
 
-      s.setup = () => {
-        s.createCanvas(400, 400);
-      };
+  showMap() {
+    this.file.nativeElement.style.display = 'none';
+  }
 
-      s.draw = () => {
-        s.background(255);
-        s.rect(x, x, x, x);
-        // if (x<100) {x=x+1}
-        // else {x=1}
-      };
-    }
-
-    let canvas = new p5(sketch);
-
+  ngAfterViewInit() {
+    this.map = document.getElementsByClassName('map')[0]
   }
 }
 
