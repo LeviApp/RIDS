@@ -1,10 +1,14 @@
 
 :parent {
-    display: flex;
+    display: none;
     background-color: blue
 }
 
 .sketch-container {
-    display: flex;
+    display: none;
     background-color: blue
+}
+
+#defaultCanvas0 {
+    display: none
 }
