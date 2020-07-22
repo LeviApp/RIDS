@@ -5,6 +5,8 @@ import { PlaceComponent } from './place/place.component'
 import { SuspectComponent } from './suspect/suspect.component'
 import { WeaponComponent } from './weapon/weapon.component'
 import { GameComponent } from './game/game.component'
+import { MapComponent } from './map/map.component'
+import { SpaceComponent } from './space/space.component'
 
 const routes: Routes = [
   {path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -13,6 +15,7 @@ const routes: Routes = [
   {path: 'suspect-info', component: SuspectComponent },
   {path: 'weapon-info', component: WeaponComponent },
   {path: 'game', component: GameComponent },
+  {path: 'map', component: SpaceComponent },
 
 ];
 
