@@ -2,14 +2,15 @@
       <profile id='pro'></profile>
       <div id='field' #file>
         <div class='character' *ngFor="let player of players">
-          <button (click)='showMap()' class='btn'>
+          <a routerLink='/map' routerLinkActive="active-link" *ngIf="auth.loggedIn">
+            <button>
             <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
-          <h1>{{player.name}}</h1>
-          </button>
+            <h1>{{player.name}}</h1>
+            </button>          
+          </a>
+
 
         </div>
       </div>
-      <map class='map' #map></map>
-
     </div>
 

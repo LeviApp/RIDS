@@ -31,41 +31,41 @@ export class MapComponent implements OnInit {
       let btns;
       let characterOptions;
       let proof;
-
+      let map;
+      let horse;
+      let tent;
       s.preload = () => {
-        // preload code
-      
+        horse = s.loadImage('https://image.flaticon.com/icons/png/512/36/36108.png')
+        tent = s.loadImage('https://cdn0.iconfinder.com/data/icons/map-locations-glyph-1/100/tent-camping-location-map-place-spot-position-512.png')
       }
 
       s.setup = () => {
-        let map = s.createCanvas(400, 400);
-        map.parent('char-contain');
+        map = s.createCanvas(600, 600);
+        map.parent('map-contain');
         btns = s.selectAll('.btn')
         characterOptions = s.select('#field')
         proof = s.select('#pro')
-
-        map.hide()
-
         for (let i = 0;i<btns.length;i++) {
-          btns[i].mousePressed(() => {
-            characterOptions.hide();
-            proof.hide();
-            map.show();
-
-
-          })
+          btns[i].mousePressed(mapOpen)
 
         }
       };
 
+      function mapOpen() {
+        characterOptions.hide();
+        proof.hide();
+        map.show();
+      }
    
 
       s.draw = () => {
-        s.background(0);
-        s.rect(x, x, x, x);
+        s.background(210, 180, 140);
+        s.image(tent, 100, 300, 100, 100)
         if (x<100) {x=x+1}
         else {x=1}
-        console.log(characterOptions)
+        s.image(horse, 100, 100, 100, 100)
+        console.log(horse, 'this is the horse')
+
       };
       
     }
