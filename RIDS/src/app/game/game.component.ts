@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {GameService} from '../game.service';
 import {AuthService} from '../auth.service'
+import { Router } from '@angular/router';
 
 import * as p5 from 'p5';
 
@@ -16,7 +17,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   @ViewChild('file') file;
   profileJson: object = null;
   private p5;
-  constructor(private _gameService: GameService, public auth: AuthService ) { }
+  constructor(private _gameService: GameService, public auth: AuthService, public router: Router ) { }
 
 
   ngOnInit() {

@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
   public players = [];
   profileJson: object = null;
   private p5;
-  constructor(private _gameService: GameService, public auth: AuthService ) { }
+  constructor(private _gameService: GameService, public auth: AuthService) { }
 
   ngOnInit() {
 
@@ -52,7 +52,7 @@ export class MapComponent implements OnInit {
         s.colorMode('RGB');
 
         map = s.createCanvas(600, 600);
-        map.parent('map-contain');
+        map.parent('char-contain');
         btns = s.selectAll('.btn');
         characterOptions = s.select('#field')
         proof = s.select('#pro')

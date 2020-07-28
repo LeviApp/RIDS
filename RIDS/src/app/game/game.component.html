@@ -1,6 +1,6 @@
     <div id='char-contain'>
-      <profile id='pro'></profile>
-      <div id='field' #file>
+      <profile id='pro' *ngIf="router.url == '/profile'"></profile>
+      <div *ngIf="router.url == '/profile'" id='field' #file>
         <div class='character' *ngFor="let player of players">
           <a routerLink='/map' routerLinkActive="active-link" *ngIf="auth.loggedIn">
             <button>
@@ -12,5 +12,7 @@
 
         </div>
       </div>
+      <map class='map' #map *ngIf="router.url == '/map'"></map>
+
     </div>
 

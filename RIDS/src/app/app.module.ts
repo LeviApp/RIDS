@@ -14,7 +14,6 @@ import {GameService} from './game.service';
 import {HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
-import { SpaceComponent } from './space/space.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +23,7 @@ import { SpaceComponent } from './space/space.component';
     PlaceComponent,
     GameComponent,
     ProfileComponent,
-    MapComponent,
-    SpaceComponent
-  ],
+    MapComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
