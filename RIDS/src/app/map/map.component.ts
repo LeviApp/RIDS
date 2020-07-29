@@ -25,7 +25,6 @@ export class MapComponent implements OnInit {
     this._gameService.getCities().subscribe(data => this.cities = data)
     this._gameService.getPlayers('this.profileJson.sub.substr(6)').subscribe(data => this.players = data)
 
-    console.log(this.profileJson, 'this is it')
     const sketch = (s) => {
       let x = 50;
       let btns;
@@ -38,6 +37,48 @@ export class MapComponent implements OnInit {
       let fort;
       let sheriff;
       let creek;
+      let horseObj;
+      let sheriffObj;
+      let tentObj;
+      let creekObj;
+      let fortObj;
+      let trainObj;
+
+      let mapObj = class {
+        xs: number;
+        ys: number;
+        width: number;
+        height: number;
+        constructor(xs,ys, width, height) {
+          this.xs = xs;
+          this.ys = ys;
+          this.width = width;
+          this.height = height;
+        }
+
+        display(val) {
+          s.image(val, this.xs, this.ys, this.width, this.height)
+        }
+
+        ride(xer, yer) {
+          if (xer < this.xs && yer < this.ys) {
+            this.xs--;
+            this.ys--;
+          }
+          else if (xer < this.xs && yer > this.ys) {
+            this.xs--;
+            this.ys++;
+          }
+          else if (xer > this.xs && yer < this.ys) {
+            this.xs++;
+            this.ys--;
+          }
+          else if (xer > this.xs && yer > this.ys){
+            this.xs++;
+            this.ys++;
+          }
+        }
+      }
       s.preload = () => {
         horse = s.loadImage('https://image.flaticon.com/icons/svg/375/375336.svg')
         tent = s.loadImage('https://cdn0.iconfinder.com/data/icons/map-locations-glyph-1/100/tent-camping-location-map-place-spot-position-512.png')
@@ -45,7 +86,14 @@ export class MapComponent implements OnInit {
         fort = s.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Font_Awesome_5_brands_fort-awesome.svg/1024px-Font_Awesome_5_brands_fort-awesome.svg.png')
         sheriff = s.loadImage('https://image.flaticon.com/icons/svg/107/107703.svg')
         creek = s.loadImage('https://image.flaticon.com/icons/svg/2899/2899933.svg')
-        
+        console.log(horse, 'this is a horse')
+        horseObj = new mapObj(270,270, 50, 50)
+        sheriffObj = new mapObj(250,250, 100, 100)
+        tentObj = new mapObj(50,250, 100, 100)
+        trainObj = new mapObj(125,50, 150, 150)
+        creekObj = new mapObj(100,450, 100, 100)
+        fortObj = new mapObj(450,50, 100, 100)
+
       }
 
       s.setup = () => {
@@ -56,11 +104,16 @@ export class MapComponent implements OnInit {
         btns = s.selectAll('.btn');
         characterOptions = s.select('#field')
         proof = s.select('#pro')
+
         for (let i = 0;i<btns.length;i++) {
           btns[i].mousePressed(mapOpen)
 
         }
       };
+
+      s.mousePressed = () => {
+          console.log('It has been clicked')
+      }
 
       function mapOpen() {
         characterOptions.hide();
@@ -68,6 +121,11 @@ export class MapComponent implements OnInit {
         map.show();
       }
    
+      function moveCities() {
+        
+      }
+
+
 
       s.draw = () => {
         s.background(210, 180, 140);
@@ -92,12 +150,19 @@ export class MapComponent implements OnInit {
         s.stroke(255)
         s.strokeWeight(10)
         s.line(260,140,480, 140)
-        s.image(sheriff, 250, 250, 100, 100)
-        s.image(tent, 50, 250, 100, 100)
-        s.image(train, 125, 50, 150, 150)
-        s.image(fort, 450, 50, 100, 100)
-        s.image(creek, 100, 450, 100, 100)
-        s.image(horse, 270, 270, 50, 50)
+        sheriffObj.display(sheriff)
+        tentObj.display(tent)
+        trainObj.display(train)
+        fortObj.display(fort)
+        creekObj.display(creek)
+        horseObj.display(horse)
+        //   horseObj.ride(95, 600)
+
+        // setTimeout(function(){
+        //   horseObj.ride(50, 250)
+        // }, 4000);
+        
+
         s.noStroke()
         s.textSize(20);
         s.text(`Denver`, 265, 375);
@@ -115,7 +180,6 @@ export class MapComponent implements OnInit {
         s.text(`Cripple Creek`, 100, 575);
         if (x<100) {x=x+1}
         else {x=1}
-        console.log(horse, 'this is the horse')
 
       };
       
