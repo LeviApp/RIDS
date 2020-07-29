@@ -43,7 +43,9 @@ export class MapComponent implements OnInit {
       let creekObj;
       let fortObj;
       let trainObj;
-
+      let mapArray;
+      let XX = 250
+      let YY = 250
       let mapObj = class {
         xs: number;
         ys: number;
@@ -57,29 +59,43 @@ export class MapComponent implements OnInit {
         }
 
         display(val) {
+          s.imageMode('center')
           s.image(val, this.xs, this.ys, this.width, this.height)
         }
 
         ride(xer, yer) {
-          if (xer < this.xs && yer < this.ys) {
-            this.xs--;
-            this.ys--;
-          }
-          else if (xer < this.xs && yer > this.ys) {
-            this.xs--;
-            this.ys++;
-          }
-          else if (xer > this.xs && yer < this.ys) {
-            this.xs++;
-            this.ys--;
-          }
-          else if (xer > this.xs && yer > this.ys){
-            this.xs++;
-            this.ys++;
+          let d1 = s.dist(s.mouseX, s.mouseY, xer, yer)
+          let d2 = s.dist(horseObj.xs, horseObj.ys, xer, yer)
+
+          if (d1 <= this.width && d2 < 350) {
+            console.log('it is below 100')
+            // while (horseObj.xs !== xer && horseObj.ys !== yer) {
+
+            //   if (xer < horseObj.xs && yer < horseObj.ys) {
+            //     horseObj.xs--;
+            //     horseObj.ys--;
+            //   }
+            //   else if (xer < horseObj.xs && yer > horseObj.ys) {
+            //     horseObj.xs--;
+            //     horseObj.ys++;
+            //   }
+            //   else if (xer > horseObj.xs && yer < horseObj.ys) {
+            //     horseObj.xs++;
+            //     horseObj.ys--;
+            //   }
+            //   else if (xer > horseObj.xs && yer > horseObj.ys){
+            //     horseObj.xs++;
+            //     horseObj.ys++;
+            //   }
+            // }
+            horseObj.xs = this.xs
+            horseObj.ys = this.ys + 30
+
           }
         }
       }
       s.preload = () => {
+        
         horse = s.loadImage('https://image.flaticon.com/icons/svg/375/375336.svg')
         tent = s.loadImage('https://cdn0.iconfinder.com/data/icons/map-locations-glyph-1/100/tent-camping-location-map-place-spot-position-512.png')
         train = s.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Train_Icon_bw.svg/1200px-Train_Icon_bw.svg.png')
@@ -87,13 +103,14 @@ export class MapComponent implements OnInit {
         sheriff = s.loadImage('https://image.flaticon.com/icons/svg/107/107703.svg')
         creek = s.loadImage('https://image.flaticon.com/icons/svg/2899/2899933.svg')
         console.log(horse, 'this is a horse')
-        horseObj = new mapObj(270,270, 50, 50)
-        sheriffObj = new mapObj(250,250, 100, 100)
-        tentObj = new mapObj(50,250, 100, 100)
-        trainObj = new mapObj(125,50, 150, 150)
-        creekObj = new mapObj(100,450, 100, 100)
-        fortObj = new mapObj(450,50, 100, 100)
+        horseObj = new mapObj(300,300, 50, 50)
+        sheriffObj = new mapObj(300,300, 100, 100)
+        tentObj = new mapObj(100,300, 100, 100)
+        trainObj = new mapObj(175,100, 150, 150)
+        creekObj = new mapObj(150,500, 100, 100)
+        fortObj = new mapObj(500,100, 100, 100)
 
+        mapArray = [horseObj, sheriffObj, tentObj, trainObj, creekObj, fortObj]
       }
 
       s.setup = () => {
@@ -112,7 +129,9 @@ export class MapComponent implements OnInit {
       };
 
       s.mousePressed = () => {
-          console.log('It has been clicked')
+          for (let i = 0; i<mapArray.length; i++) {
+            mapArray[i].ride(mapArray[i].xs, mapArray[i].ys)
+          }
       }
 
       function mapOpen() {
@@ -128,7 +147,7 @@ export class MapComponent implements OnInit {
 
 
       s.draw = () => {
-        s.background(210, 180, 140);
+        s.background('peru');
         s.stroke(255)
         s.strokeWeight(10)
         s.line(100,300,200,125)
@@ -149,7 +168,7 @@ export class MapComponent implements OnInit {
         s.line(300,300,480, 140)
         s.stroke(255)
         s.strokeWeight(10)
-        s.line(260,140,480, 140)
+        s.line(200,125,480, 140)
         sheriffObj.display(sheriff)
         tentObj.display(tent)
         trainObj.display(train)
