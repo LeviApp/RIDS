@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
         profile => {this.profileJson = profile}
       );
   
-    this._gameService.getCities().subscribe(data => this.cities = data)
+    this._gameService.getCities(1).subscribe(data => this.cities = data)
     this._gameService.getPlayers('this.profileJson.sub.substr(6)').subscribe(data => this.players = data)
 
     const sketch = (s) => {

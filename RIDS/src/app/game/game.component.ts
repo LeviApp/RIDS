@@ -28,6 +28,7 @@ export class GameComponent implements OnInit, AfterViewInit {
       );
   
     this._gameService.getPlayers('this.profileJson.sub.substr(6)').subscribe(data => this.players = data)
+    console.log(this.players)
 
   }
 
