@@ -2,7 +2,7 @@
       <profile id='pro' *ngIf="router.url == '/profile'"></profile>
       <div *ngIf="router.url == '/profile'" id='field' #file>
         <div class='character' *ngFor="let player of players">
-          <a routerLink='/map' routerLinkActive="active-link" *ngIf="auth.loggedIn" (click)="playerData(player)">
+          <a routerLink='/Denver' routerLinkActive="active-link" *ngIf="auth.loggedIn" (click)="playerData(player)">
             <button>
             <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
             <h1>{{player.name}}</h1>

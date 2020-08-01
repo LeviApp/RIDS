@@ -6,6 +6,13 @@ export interface City {
     travel_time: number;
 }
 
+export interface Place {
+    id: number;
+    name: string;
+    description: string;
+    city: number;
+}
+
 export class PostPlayer {
     user_id: string;
     rank: string;
