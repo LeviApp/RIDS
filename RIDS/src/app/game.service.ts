@@ -2,6 +2,7 @@ import { Injectable, ViewChild  } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {City, PostPlayer, Player, Place} from './game'
 import {Observable} from 'rxjs/Observable'
+import 'rxjs/Rx';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +26,7 @@ export class GameService {
   }
 
   getPlaces(): Observable<Place[]> {
-    return this.http.get<Place[]>(this._cityurl)
+    return this.http.get<Place[]>(this._placeurl)
   }
   getPlayers(userID): Observable<Player[]> {
     let params_id = new HttpParams().set('user_id', userID)
