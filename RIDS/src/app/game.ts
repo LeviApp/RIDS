@@ -39,3 +39,10 @@ export interface Player {
     place_id: number;
     city_id: number;
 }
+
+export interface Witness {
+    id: number;
+    name: string;
+    description: string;
+    place: number;
+}
