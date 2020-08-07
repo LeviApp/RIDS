@@ -11,13 +11,15 @@ export class CityComponent implements OnInit {
   public testCities = ['Denver', 'Cripple Creek', 'Fort Morgan', 'Louisville', 'Idaho Springs'];
   public places = [];
   public witnesses = [];
-  public index = 0
+  public index = 0;
+  public theChosen;
   constructor(private _gameService: GameService) { }
 
   ngOnInit() {
-    this._gameService.getCities(1).subscribe(data => {
+    this.theChosen = this._gameService.getChosen()
+
+    this._gameService.getCities(this.theChosen.place_id).subscribe(data => {
       this.city = [data]
-      console.log(this.city,'this is the city array')
       
     }
       )

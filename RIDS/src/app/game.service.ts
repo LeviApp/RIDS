@@ -19,6 +19,7 @@ export class GameService {
   private _witnessurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/witnesses/';
 
   private _playerurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/players/';
+  public chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
     console.log('city api fired')
@@ -39,5 +40,13 @@ export class GameService {
   }
   addPlayer(playerD: PostPlayer) {
     return this.http.post(this._playerurl, playerD)
+  }
+
+  getChosen() {
+    return this.chosenPlayer
+  }
+
+  setChosen(val) {
+   this.chosenPlayer = val
   }
 }

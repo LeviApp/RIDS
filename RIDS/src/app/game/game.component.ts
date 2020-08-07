@@ -13,7 +13,7 @@ import * as p5 from 'p5';
 export class GameComponent implements OnInit, AfterViewInit {
   public cities = [];
   public players = [];
-  public chosenPlayer;
+
   public map;
   @ViewChild('file') file;
   profileJson: object = null;
@@ -33,8 +33,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   playerData(player) {
-      this.chosenPlayer = player;
-      console.log(this.chosenPlayer, 'you have been chosen')
+      this._gameService.setChosen(player);
+      console.log(this._gameService.chosenPlayer, 'you have been chosen')
   }
 
   ngAfterViewInit() {
