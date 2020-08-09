@@ -43,10 +43,13 @@ export class GameService {
   }
 
   getChosen() {
+    console.log('this is the chosen data', this.chosenPlayer)
     return this.chosenPlayer
   }
 
   setChosen(val) {
    this.chosenPlayer = val
+   console.log('this is the chosen data', this.chosenPlayer)
+
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {GameService} from '../game.service';
 
 @Component({
@@ -6,23 +6,28 @@ import {GameService} from '../game.service';
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.scss']
 })
-export class CityComponent implements OnInit {
+export class CityComponent implements OnInit, OnChanges {
   public city = [];
   public testCities = ['Denver', 'Cripple Creek', 'Fort Morgan', 'Louisville', 'Idaho Springs'];
   public places = [];
   public witnesses = [];
   public index = 0;
   public theChosen;
-  constructor(private _gameService: GameService) { }
+  constructor(public _gameService: GameService) { }
 
   ngOnInit() {
+    
     this.theChosen = this._gameService.getChosen()
 
+    setTimeout(() => {
+      console.log(this.theChosen, 'this is in setTimeout chosen')
     this._gameService.getCities(this.theChosen.place_id).subscribe(data => {
       this.city = [data]
       
     }
       )
+    }, 2000)
+
 
       console.log(this.city, 'this is the city after')
 
@@ -34,7 +39,7 @@ export class CityComponent implements OnInit {
         }
           )
 
-      }, 1000)
+      }, 3000)
 
       setTimeout(() => {
         this._gameService.getWitnesses().subscribe(data => {
@@ -44,14 +49,18 @@ export class CityComponent implements OnInit {
         }
           )
 
-      }, 1000)
+      }, 4000)
 
       
   }
 
+  ngOnChanges() {
+    
+  }
+
   move() {
     console.log(this.index)
-    if (this.index === this.places.length) {
+    if (this.index === this.places.length - 1) {
       this.index = 0
     }
 
