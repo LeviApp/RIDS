@@ -33,7 +33,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   playerData(player) {
-      this._gameService.setChosen = player;
+    localStorage.setItem("theChosen", JSON.stringify(player));
       // console.log(this._gameService._chosenPlayer, 'you have been chosen')
   }
 

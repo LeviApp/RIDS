@@ -17,9 +17,10 @@ export class CityComponent implements OnInit, OnChanges {
   constructor(public _gameService: GameService) { }
 
   ngOnInit() {
-    
-    this.theChosen = this._gameService.getChosen
 
+    this.theChosen = JSON.parse(localStorage.getItem('theChosen'))
+    console.log(localStorage.getItem('theChosen'), 'this is storage')
+    
     setTimeout(() => {
       console.log(this.theChosen, 'this is in setTimeout chosen')
     this._gameService.getCities(this.theChosen.place_id).subscribe(data => {
