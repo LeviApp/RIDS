@@ -46,3 +46,14 @@ export interface Witness {
     description: string;
     place: number;
 }
+
+export interface Response {
+    id: number;
+    suspect: string;
+    place: string;
+    weapon: string;
+    goodbye: string;
+    witness: number
+}
+
+

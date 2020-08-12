@@ -1,6 +1,6 @@
 import { Injectable, ViewChild  } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {City, PostPlayer, Player, Place, Witness} from './game'
+import {City, PostPlayer, Player, Place, Witness, Response} from './game'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/Rx';
 @Injectable({
@@ -17,9 +17,10 @@ export class GameService {
   private _cityurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/cities/';
   private _placeurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/places/';
   private _witnessurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/witnesses/';
+  private _responseurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/responses/';
 
   private _playerurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/players/';
-  public chosenPlayer;
+  private _chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
     console.log('city api fired')
@@ -34,6 +35,10 @@ export class GameService {
   getWitnesses(): Observable<Witness[]> {
     return this.http.get<Witness[]>(this._witnessurl)
   }
+
+  getResponses(): Observable<Response[]> {
+    return this.http.get<Response[]>(this._responseurl)
+  }
   getPlayers(userID): Observable<Player[]> {
     let params_id = new HttpParams().set('user_id', userID)
     return this.http.get<Player[]>(this._playerurl, { params: params_id})
@@ -42,14 +47,14 @@ export class GameService {
     return this.http.post(this._playerurl, playerD)
   }
 
-  getChosen() {
-    console.log('this is the chosen data', this.chosenPlayer)
-    return this.chosenPlayer
+  get getChosen(): object {
+    console.log('this is the chosen data', this._chosenPlayer)
+    return this._chosenPlayer
   }
 
-  setChosen(val) {
-   this.chosenPlayer = val
-   console.log('this is the chosen data', this.chosenPlayer)
+  set setChosen(val: Observable<Player> ) {
+   this._chosenPlayer = val
+   console.log('this is the chosen data', this._chosenPlayer)
 
   }
 }
