@@ -16,3 +16,23 @@
         <button (click)="move()">Next</button>
     </div>
 
+    <div *ngIf="responses.length !== 0">
+        <h1>{{responses[index].suspect}}</h1>
+        <br />
+        <h1>{{responses[index].place}}</h1>
+        <br />
+        <h1>{{responses[index].weapon}}</h1>
+        <h1>{{responses[index].goodbye}}</h1>
+
+        <button (click)="move()">Next</button>
+    </div>
+    <div>
+    <select id="cars">
+        <option value="volvo">{{theChosen.question_suspect}}</option>
+        <option value="saab">{{theChosen.question_place}}</option>
+        <option value="opel">{{theChosen.question_weapon}}</option>
+        <option value="audi">{{theChosen.goodbye}}</option>
+    </select>
+
+    <h2>{{theChosen.rank}}&nbsp;{{theChosen.name}}</h2>
+    </div>

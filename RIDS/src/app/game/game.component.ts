@@ -33,8 +33,8 @@ export class GameComponent implements OnInit, AfterViewInit {
   }
 
   playerData(player) {
-      this._gameService.setChosen(player);
-      console.log(this._gameService.chosenPlayer, 'you have been chosen')
+      this._gameService.setChosen = player;
+      // console.log(this._gameService._chosenPlayer, 'you have been chosen')
   }
 
   ngAfterViewInit() {

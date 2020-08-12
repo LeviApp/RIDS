@@ -11,13 +11,14 @@ export class CityComponent implements OnInit, OnChanges {
   public testCities = ['Denver', 'Cripple Creek', 'Fort Morgan', 'Louisville', 'Idaho Springs'];
   public places = [];
   public witnesses = [];
+  public responses = [];
   public index = 0;
   public theChosen;
   constructor(public _gameService: GameService) { }
 
   ngOnInit() {
     
-    this.theChosen = this._gameService.getChosen()
+    this.theChosen = this._gameService.getChosen
 
     setTimeout(() => {
       console.log(this.theChosen, 'this is in setTimeout chosen')
@@ -50,6 +51,16 @@ export class CityComponent implements OnInit, OnChanges {
           )
 
       }, 4000)
+
+      setTimeout(() => {
+        this._gameService.getResponses().subscribe(data => {
+          this.responses = data.filter(item => item.id >= this.places[0].id && item.id <= this.places[0].id + 5)
+          console.log(this.responses,'this is the responses array inside setTimeout')
+
+        }
+          )
+
+      }, 6000)
 
       
   }
