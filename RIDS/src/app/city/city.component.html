@@ -6,33 +6,36 @@
         <button>Enter</button>
     </div>
 
-    <div *ngIf="places.length !== 0 && witnesses.length !== 0">
-        <h1>{{places[index].description}}</h1>
-        <br />
-        <h1>{{witnesses[index].name}}</h1>
-        <br />
-        <h2>{{witnesses[index].description}}</h2>
+    <div class='place'>
+        <div class='place-info' *ngIf="places.length !== 0 && witnesses.length !== 0">
+            <h1>{{places[index].name}}</h1>
+            <br />
+            <h2>{{places[index].description}}</h2>        <br />
+        </div>
 
-        <button (click)="move()">Next</button>
-    </div>
+        <div class='witness-info' *ngIf="places.length !== 0 && witnesses.length !== 0">
+            <h2>{{witnesses[index].description}}</h2>
+        </div>
 
-    <div *ngIf="responses.length !== 0">
-        <h1>{{responses[index].suspect}}</h1>
-        <br />
-        <h1>{{responses[index].place}}</h1>
-        <br />
-        <h1>{{responses[index].weapon}}</h1>
-        <h1>{{responses[index].goodbye}}</h1>
+        <div class='person-responses' *ngIf="places.length !== 0 && witnesses.length !== 0">
+            <h1>{{witnesses[index].name}}</h1>
+            <br />
+            <h2>How may I help you?</h2>
 
-        <button (click)="move()">Next</button>
-    </div>
-    <div>
-    <select id="cars">
-        <option value="volvo">{{theChosen.question_suspect}}</option>
-        <option value="saab">{{theChosen.question_place}}</option>
-        <option value="opel">{{theChosen.question_weapon}}</option>
-        <option value="audi">{{theChosen.goodbye}}</option>
-    </select>
-
-    <h2>{{theChosen.rank}}&nbsp;{{theChosen.name}}</h2>
+        </div>
+        <div class='person-responses' *ngIf="places.length !== 0 && witnesses.length !== 0">
+            <div>
+                <h3>▼</h3>
+                <h2>Howdy!</h2>
+            </div>
+            <!-- <select>
+                <option value="suspect">Howdy!</option>
+                <option value="suspect">{{theChosen.question_suspect}}</option>
+                <option value="place">{{theChosen.question_place}}</option>
+                <option value="weapon">{{theChosen.question_weapon}}</option>
+                <option value="goodbye">{{theChosen.goodbye}}</option>
+            </select> -->
+            <br />
+        <h1>{{theChosen.rank}}&nbsp;{{theChosen.name}}</h1>
+        </div>
     </div>
