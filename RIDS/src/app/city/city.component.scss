@@ -77,6 +77,7 @@
         }
         div {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             h2 {
@@ -88,6 +89,24 @@
                 font-size: 0.75rem;
                 color: blue;
                 margin: 15px;
+            }
+
+            div {
+                display: flex;
+                flex-direction: row;
+                button {
+                    font-size: 2rem;
+                    margin: 10px 0 0 0
+                }
+            }
+        }
+        .move_btn {
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+            button {
+                background-color: tan;
+                font-size: 2rem;
             }
         }
         // select {

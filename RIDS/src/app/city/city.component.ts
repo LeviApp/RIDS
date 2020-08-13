@@ -14,6 +14,7 @@ export class CityComponent implements OnInit, OnChanges {
   public responses = [];
   public index = 0;
   public theChosen;
+  public question = 0;
   constructor(public _gameService: GameService) { }
 
   ngOnInit() {
@@ -70,15 +71,31 @@ export class CityComponent implements OnInit, OnChanges {
     
   }
 
-  move() {
-    console.log(this.index)
-    if (this.index === this.places.length - 1) {
-      this.index = 0
+  move(val) {
+    if (val === 0) {
+      if (this.index === 0) {
+        this.index = this.places.length - 1
+      }
+  
+      else {
+        this.index--
+      }
     }
 
     else {
-      this.index++
+      if (this.index === this.places.length - 1) {
+        this.index = 0
+      }
+  
+      else {
+        this.index++
+      }
     }
+    this.question = 0
+  }
+
+  questioning(val) {
+      this.question = val
   }
 
 }
