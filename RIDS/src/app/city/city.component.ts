@@ -15,6 +15,7 @@ export class CityComponent implements OnInit, OnChanges {
   public index = 0;
   public theChosen;
   public question = 0;
+  public smallest;
   constructor(public _gameService: GameService) { }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class CityComponent implements OnInit, OnChanges {
     
     setTimeout(() => {
       console.log(this.theChosen, 'this is in setTimeout chosen')
-    this._gameService.getCities(this.theChosen.place_id).subscribe(data => {
+    this._gameService.getCities(2).subscribe(data => {
       this.city = [data]
       
     }
@@ -46,9 +47,9 @@ export class CityComponent implements OnInit, OnChanges {
 
       setTimeout(() => {
         this._gameService.getWitnesses().subscribe(data => {
-          this.witnesses = data.filter(item => item.place >= this.places[0].id && item.place <= this.places[0].id + 5)
+          this.witnesses = data.filter(item => item.place >= this.places[0].id && item.place <= this.places[0].id + 5).sort((x,y) => x.place - y.place)
+          this.smallest = data.filter(item => item.place >= this.places[0].id && item.place <= this.places[0].id + 5).sort((x,y) => x.id - y.id)[0].id
           console.log(this.witnesses,'this is the witnesses array inside setTimeout')
-    
         }
           )
 
@@ -56,7 +57,7 @@ export class CityComponent implements OnInit, OnChanges {
 
       setTimeout(() => {
         this._gameService.getResponses().subscribe(data => {
-          this.responses = data.filter(item => item.id >= this.places[0].id && item.id <= this.places[0].id + 5)
+          this.responses = data.filter(item => item.witness >= this.smallest && item.id <= this.smallest + 5)
           console.log(this.responses,'this is the responses array inside setTimeout')
 
         }

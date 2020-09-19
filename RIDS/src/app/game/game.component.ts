@@ -24,11 +24,17 @@ export class GameComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
       this.auth.userProfile$.subscribe(
-        profile => {this.profileJson = profile}
-      );
+        profile => {
+          console.log(profile, 'this is the prifile')
+          this.profileJson = profile
+          if (this.profileJson) {
+            this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => this.players = data)
   
-    this._gameService.getPlayers('this.profileJson.sub.substr(6)').subscribe(data => this.players = data)
-    console.log(this.players)
+          }
+          }
+      );
+
+    console.log(this.profileJson, 'this is prf json')
 
   }
 
