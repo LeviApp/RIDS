@@ -14,12 +14,12 @@ export class GameService {
   @ViewChild('qwI') qwI;
   @ViewChild('goodbyeI') goodbyeI;
 
-  private _cityurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/cities/';
-  private _placeurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/places/';
-  private _witnessurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/witnesses/';
-  private _responseurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/responses/';
+  private _cityurl: string = 'http://127.0.0.1:8000/murderincolor/api/cities/';
+  private _placeurl: string = 'http://127.0.0.1:8000/murderincolor/api/places/';
+  private _witnessurl: string = 'http://127.0.0.1:8000/murderincolor/api/witnesses/';
+  private _responseurl: string = 'http://127.0.0.1:8000/murderincolor/api/responses/';
 
-  private _playerurl: string = 'https://reforminduststorms.herokuapp.com/murderincolor/api/players/';
+  private _playerurl: string = 'http://127.0.0.1:8000/murderincolor/api/players/';
   private _chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
@@ -40,7 +40,7 @@ export class GameService {
     return this.http.get<Response[]>(this._responseurl)
   }
   getPlayers(userID): Observable<Player[]> {
-    let params_id = new HttpParams().set('user_id', userID)
+    let params_id = new HttpParams().set('userid', userID)
     return this.http.get<Player[]>(this._playerurl, { params: params_id})
   }
   addPlayer(playerD: PostPlayer) {
