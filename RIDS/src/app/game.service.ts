@@ -14,12 +14,12 @@ export class GameService {
   @ViewChild('qwI') qwI;
   @ViewChild('goodbyeI') goodbyeI;
 
-  private _cityurl: string = 'http://127.0.0.1:8000/murderincolor/api/cities/';
-  private _placeurl: string = 'http://127.0.0.1:8000/murderincolor/api/places/';
-  private _witnessurl: string = 'http://127.0.0.1:8000/murderincolor/api/witnesses/';
-  private _responseurl: string = 'http://127.0.0.1:8000/murderincolor/api/responses/';
+  private _cityurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/cities/';
+  private _placeurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/places/';
+  private _witnessurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/witnesses/';
+  private _responseurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/responses/';
 
-  private _playerurl: string = 'http://127.0.0.1:8000/murderincolor/api/players/';
+  private _playerurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/players/';
   private _chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
