@@ -11,9 +11,9 @@
       <a routerLink='/suspect-info' routerLinkActive="active-link">ⓘ Suspect</a>
       <a routerLink='/weapon-info' routerLinkActive="active-link">ⓘ Weapon</a>
       <a routerLink='/place-info' routerLinkActive="active-link">ⓘ Place</a>
-      <!-- <a routerLink='/profile' routerLinkActive="active-link" (click)="auth.login()" *ngIf="!auth.loggedIn">▶ Play</a>
-      <a routerLink='/profile' routerLinkActive="active-link" *ngIf="auth.loggedIn" (click)="getID()">▶ Play</a> -->
-      <a routerLink='/profile' routerLinkActive="active-link">▶ Play</a>
+      <a routerLink='/profile' routerLinkActive="active-link" (click)="auth.login()" *ngIf="!auth.loggedIn">▶ Play</a>
+      <a routerLink='/profile' routerLinkActive="active-link" *ngIf="auth.loggedIn" (click)="getID()">▶ Play</a>
+      <!-- <a routerLink='/profile' routerLinkActive="active-link">▶ Play</a> -->
 
     </div>
   </section>
@@ -36,7 +36,7 @@
 </div>
 
 <footer>
-  <!-- <div class="footer">
+    <button class="footer-btn" (click)="mapOpen()">MAP</button>
     <div class='signup'>
       <h3 *ngIf="!auth.loggedIn">Ready to solve the case?</h3>
       <button (click)="auth.login()" *ngIf="!auth.loggedIn">Sign Up or Log In!</button>
@@ -44,5 +44,6 @@
       <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
       <h1 *ngIf="auth.userProfile$ | async as profile">{{profile.sub}}</h1>
     </div>
-  </div> -->
+    <button class="footer-btn">CASE NOTES</button>
 </footer>
+<map *ngIf="map_open"></map>
