@@ -9,6 +9,7 @@ import auth0 from '@auth0/auth0-spa-js'
 export class AppComponent implements OnInit {
   title = 'RIDS';
   profileJson: object = null;
+  map_open = false;
 
 
   constructor (public auth: AuthService) {
@@ -44,5 +45,9 @@ MenuC () {
   this.bott.nativeElement.classList.remove('open')
   this.dArrow.nativeElement.style.display = "block"
   this.uArrow.nativeElement.style.display = "none"
+}
+
+mapOpen() {
+  this.map_open = !this.map_open;
 }
 }
