@@ -24,14 +24,25 @@ export class ProfileComponent implements OnInit {
   playerReq: PostPlayer;
   playerRes: Player;
   characters: object[] = [];
-
-  constructor (public auth: AuthService, public gameService: GameService) {
+  chosenCharacter: object = null;
+  constructor (public auth: AuthService, public _gameService: GameService) {
     
   }
 
   ngOnInit() {
     this.auth.userProfile$.subscribe(
-      profile => {this.profileJson = profile}
+      profile => {
+        console.log(profile, 'this is the prifile')
+        this.profileJson = profile
+        if (this.profileJson) {
+          this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => {
+            console.log("data is ", data)
+            this.characters = data;
+            this.chosenCharacter = data[0];
+          }
+            )
+        }
+        }
     );
   }
 
@@ -71,7 +82,7 @@ export class ProfileComponent implements OnInit {
     this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
     this.playerReq.place_id = 1;
     this.playerReq.city_id = 1;
-    this.gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
+    this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
       this.playerRes = res;
       this.characters = [...this.characters, this.playerRes]
     })

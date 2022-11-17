@@ -34,14 +34,19 @@
     </div>
 </div>
 
-<!-- {
-    "rank": "Deputy",
-    "name": "Jim Carson",
-    "description": "My name is Carson, Jim Carson. I am a tall, young man with hair as black as night. I can handle myself in a fight, and can outdraw any outlaw. I wear the badge proudly as I seek to bring reform in the middle of a barren dust storm called the West, the Wild West.",
-    "question_suspect": "What does the suspect look like?",
-    "question_place": "Do you remember where the crime took place?",
-    "question_weapon": "Did you see what kind of weapon the suspect had?",
-    "goodbye": "Have a wonderful day!",
-    "place_id": 1,
-    "city_id": 1
-} -->
+<div class='char-contain'>
+    <profile id='pro'></profile>
+    <div id='field' #file>
+      <div class='character' *ngFor="let character of characters">
+        <a routerLink='/Denver' routerLinkActive="active-link" *ngIf="auth.loggedIn">
+          <button>
+          <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
+          <h1>HELLO DUMMY!</h1>
+          <!-- <h1>{{chosenCharacter.name}}</h1> -->
+          </button>          
+        </a>
+
+
+      </div>
+    </div>
+  </div>

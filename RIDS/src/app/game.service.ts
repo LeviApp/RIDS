@@ -14,12 +14,12 @@ export class GameService {
   @ViewChild('qwI') qwI;
   @ViewChild('goodbyeI') goodbyeI;
 
-  private _cityurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/cities/';
-  private _placeurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/places/';
-  private _witnessurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/witnesses/';
-  private _responseurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/responses/';
+  private _cityurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/cities/';
+  private _placeurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/places/';
+  private _witnessurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/witnesses/';
+  private _responseurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/responses/';
 
-  private _playerurl: string = 'https://reform-in-dust-storms.onrender.com/murderincolor/api/players/';
+  private _playerurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/filtered-players/';
   private _chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
@@ -40,8 +40,9 @@ export class GameService {
     return this.http.get<Response[]>(this._responseurl)
   }
   getPlayers(userID): Observable<Player[]> {
-    let params_id = new HttpParams().set('userid', userID)
-    return this.http.get<Player[]>(this._playerurl, { params: params_id})
+    const headers = {'userid': userID}
+    console.log(userID, "userID")
+    return this.http.get<Player[]>(this._playerurl, { headers })
   }
   addPlayer(playerD: PostPlayer) {
     return this.http.post(this._playerurl, playerD)

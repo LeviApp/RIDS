@@ -47,7 +47,16 @@ MenuC () {
   this.uArrow.nativeElement.style.display = "none"
 }
 
-mapOpen() {
-  this.map_open = !this.map_open;
+mapOpen(e) {
+  if (e.target.value === "mapbutton") {
+    this.map_open = !this.map_open;
+    e.stopPropagation();
+  }
+  else {
+    this.map_open = false;
+  }
 }
+// mapClose() {
+//   this.map_open = false;
+// }
 }
