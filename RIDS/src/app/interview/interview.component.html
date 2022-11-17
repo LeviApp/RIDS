@@ -1,0 +1,52 @@
+<!-- <div class='place'>
+    <div class='place-info' *ngIf="places.length !== 0 && witnesses.length !== 0">
+        <h1>{{places[index].name}}</h1>
+        <br />
+        <h2>{{places[index].description}}</h2>        <br />
+    </div>
+
+    <div class='witness-info' *ngIf="places.length !== 0 && witnesses.length !== 0">
+        <h2>{{witnesses[index].description}}</h2>
+    </div>
+
+    <div class='person-responses' *ngIf="places.length !== 0 && witnesses.length !== 0">
+        <h1>{{witnesses[index].name}}</h1>
+        <br />
+        <h2 *ngIf='question === 0'>How may I help you?</h2>
+        <h2 *ngIf='question === 1'>{{responses[index].suspect}}</h2>
+        <h2 *ngIf='question === 2'>{{responses[index].weapon}}</h2>
+        <h2 *ngIf='question === 3'>{{responses[index].place}}</h2>
+        <h2 *ngIf='question === 4'>{{responses[index].goodbye}}</h2>
+    </div>
+    <div class='person-responses' *ngIf="places.length !== 0 && witnesses.length !== 0">
+        <div>
+            <h2 *ngIf='question === 0'>Howdy!</h2>
+            <h2 *ngIf='question === 1'>{{theChosen.question_suspect}}</h2>
+            <h2 *ngIf='question === 2'>{{theChosen.question_weapon}}</h2>
+            <h2 *ngIf='question === 3'>{{theChosen.question_place}}</h2>
+            <h2 *ngIf='question === 4'>{{theChosen.goodbye}}</h2>
+
+            <div>
+                <button (click)="questioning(1)">👤?</button>
+                <button (click)="questioning(2)">⛏?</button>
+                <button (click)="questioning(3)">⛰?</button>
+                <button (click)="questioning(4)"> 👋</button>
+            </div>
+        </div>
+        <select>
+            <option value="suspect">Howdy!</option>
+            <option value="suspect">{{theChosen.question_suspect}}</option>
+            <option value="place">{{theChosen.question_place}}</option>
+            <option value="weapon">{{theChosen.question_weapon}}</option>
+            <option value="goodbye">{{theChosen.goodbye}}</option>
+        </select>
+        <br />
+        <h1>{{theChosen.rank}}&nbsp;{{theChosen.name}}</h1>
+        <div class='move_btn'>
+        <button (click)="move(0)">Left</button>
+        <button (click)="move(1)">Right</button>
+        </div>
+    </div>
+</div> -->
+
+<h1>Interviewing ...</h1>

@@ -25,7 +25,7 @@ export class CityComponent implements OnInit, OnChanges {
     
     setTimeout(() => {
       console.log(this.theChosen, 'this is in setTimeout chosen')
-    this._gameService.getCities(5).subscribe(data => {
+    this._gameService.getCities(1).subscribe(data => {
       this.city = [data]
       
     }
