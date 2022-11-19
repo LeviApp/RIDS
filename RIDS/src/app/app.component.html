@@ -1,4 +1,4 @@
-<div (click)="mapOpen($event)" value="maincont">
+<div (click)="toggleOpen($event)" value="maincont">
 <header>
   <section class="nav">
     <div class='top'>
@@ -35,7 +35,7 @@
 </div>
 
 <footer>
-    <button class="footer-btn" (click)="mapOpen($event)" value="mapbutton">MAP</button>
+    <button class="footer-btn" (click)="toggleOpen($event)" value="mapbutton">MAP</button>
     <div class='signup'>
       <h3 *ngIf="!auth.loggedIn">Ready to solve the case?</h3>
       <button (click)="auth.login()" *ngIf="!auth.loggedIn">Sign Up or Log In!</button>
@@ -43,7 +43,7 @@
       <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
       <h1 *ngIf="auth.userProfile$ | async as profile">{{profile.sub}}</h1>
     </div>
-    <button class="footer-btn" (click)="notesOpen($event)">CASE NOTES</button>
+    <button class="footer-btn" (click)="toggleOpen($event)"  value="notesbutton">CASE NOTES</button>
 </footer>
 </div>
 <map *ngIf="map_open"></map>

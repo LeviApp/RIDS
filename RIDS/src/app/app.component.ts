@@ -57,19 +57,24 @@ MenuC () {
   this.uArrow.nativeElement.style.display = "none"
 }
 
-mapOpen(e) {
+toggleOpen(e) {
   if (e.target.value === "mapbutton") {
     this.map_open = !this.map_open;
+    this.notes_open = false;
+
+    e.stopPropagation();
+  }
+  else if (e.target.value === "notesbutton") {
+    this.map_open = false;
+    this.notes_open = !this.notes_open;
     e.stopPropagation();
   }
   else {
     this.map_open = false;
+    this.notes_open = false;
   }
 }
-notesOpen(e) {
-  console.log(e.target.value)
-  this.notes_open = true;
-}
+
 noteSubmit() {
   this.testText += `${this.NotesForm.get("write").value}\n\n`
 }
