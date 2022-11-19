@@ -71,6 +71,6 @@ notesOpen(e) {
   this.notes_open = true;
 }
 noteSubmit() {
-  this.testText += `${this.NotesForm.get("write").value}\n`
+  this.testText += `${this.NotesForm.get("write").value}\n\n`
 }
 }

@@ -248,12 +248,21 @@ a.active-link {
         font-size: 2rem;
         font-family: 'Caveat', cursive;
         margin: 10px;
+        overflow-y: scroll;
     }
 
-    input {
-        font-size: 2rem;
-        font-family: 'Caveat', cursive;
-        padding: 10px;
+    section {
+        display: flex;
+        input {
+            font-size: 2rem;
+            font-family: 'Caveat', cursive;
+            padding: 10px;
+            width: 100%;
+        }
+
+        button {
+            font-size: 2rem;
+        }
     }
 
 }
