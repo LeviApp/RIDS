@@ -43,7 +43,16 @@
       <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
       <h1 *ngIf="auth.userProfile$ | async as profile">{{profile.sub}}</h1>
     </div>
-    <button class="footer-btn">CASE NOTES</button>
+    <button class="footer-btn" (click)="notesOpen($event)">CASE NOTES</button>
 </footer>
 </div>
 <map *ngIf="map_open"></map>
+<form [formGroup]="NotesForm" class="notes" *ngIf="notes_open" (ngSubmit)="noteSubmit()">
+  <h1>CASE NOTES</h1>
+  <section>
+    <input type="text" value="" formControlName="write">
+    <button>Write It Down</button>
+
+  </section>
+  <p [innerText]="testText"></p>
+</form>

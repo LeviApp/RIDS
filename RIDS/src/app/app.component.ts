@@ -1,18 +1,25 @@
 import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import {AuthService} from './auth.service'
 import auth0 from '@auth0/auth0-spa-js'
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   title = 'RIDS';
   profileJson: object = null;
   map_open = false;
+  notes_open = false;
+  testText = ""
 
+  NotesForm = new FormGroup({
+    write: new FormControl(''),
+  })
 
-  constructor (public auth: AuthService) {
+  constructor (private fb: FormBuilder, public auth: AuthService) {
     
   }
 
@@ -28,6 +35,9 @@ export class AppComponent implements OnInit {
     this.auth.userProfile$.subscribe(
       profile => {this.profileJson = profile}
     );
+    this.NotesForm = this.fb.group({
+      write: ''
+  })
   }
   MenuO() {
     this.bott.nativeElement.classList.add('open')
@@ -56,7 +66,11 @@ mapOpen(e) {
     this.map_open = false;
   }
 }
-// mapClose() {
-//   this.map_open = false;
-// }
+notesOpen(e) {
+  console.log(e.target.value)
+  this.notes_open = true;
+}
+noteSubmit() {
+  this.testText += `${this.NotesForm.get("write").value}\n`
+}
 }
