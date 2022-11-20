@@ -12,11 +12,14 @@ import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {AuthService} from './auth.service';
 import {GameService} from './game.service';
 import {HttpClientModule} from '@angular/common/http';
-import { ProfileComponent } from './profile/profile.component';
 import { MapComponent } from './map/map.component';
 import { CityComponent } from './city/city.component';
 import { InterviewComponent } from './interview/interview.component';
 import { CharactersComponent } from './characters/characters.component';
+import { CaseComponent } from './case/case.component';
+import { ChardetailsComponent } from './chardetails/chardetails.component';
+import { LocaleComponent } from './locale/locale.component';
+import { HeadquartersComponent } from './headquarters/headquarters.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { CharactersComponent } from './characters/characters.component';
     SuspectComponent,
     PlaceComponent,
     GameComponent,
-    ProfileComponent,
     CityComponent,
     MapComponent,
     InterviewComponent,
-    CharactersComponent  ],
+    CharactersComponent,
+    CaseComponent,
+    ChardetailsComponent,
+    LocaleComponent,
+    HeadquartersComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
