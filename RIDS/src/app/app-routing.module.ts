@@ -9,6 +9,7 @@ import { GameComponent } from './game/game.component'
 import { MapComponent } from './map/map.component'
 import { CityComponent } from './city/city.component'
 import { InterviewComponent } from './interview/interview.component';
+import { HeadquartersComponent } from './headquarters/headquarters.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: 'place-info', component: PlaceComponent },
   {path: 'suspect-info', component: SuspectComponent },
   {path: 'weapon-info', component: WeaponComponent },
-  {path: 'characters', component: CharactersComponent },
+  {path: 'headquarters', component: HeadquartersComponent },
   {path: 'map', component: GameComponent },
   {path: 'Denver', component: CityComponent },
   {path: 'interview', component: InterviewComponent },

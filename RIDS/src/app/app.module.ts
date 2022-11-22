@@ -20,6 +20,7 @@ import { CaseComponent } from './case/case.component';
 import { ChardetailsComponent } from './chardetails/chardetails.component';
 import { LocaleComponent } from './locale/locale.component';
 import { HeadquartersComponent } from './headquarters/headquarters.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HeadquartersComponent } from './headquarters/headquarters.component';
     CaseComponent,
     ChardetailsComponent,
     LocaleComponent,
-    HeadquartersComponent  ],
+    HeadquartersComponent,
+    NavComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
