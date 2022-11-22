@@ -1,0 +1,113 @@
+$backgroundc: #FFFFFF;
+$secondaryc: #222222;
+$footerbc: #F9AD2E;
+$tabselectbc: orange;
+$graysquarec: #D8D8D8;
+
+@mixin font($w,$s,$c,$h) {
+    font-weight:$w;
+    font-size:$s;
+    color:$c;
+    line-height: $h;
+}
+
+
+@mixin flex($direction, $justify, $align) {
+    display:flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+nav {
+    width: 100%;
+    box-sizing: border-box;
+    position:fixed;
+    top: 0;
+    background-color: #F9AD2E;
+    padding: 20px;
+    z-index: 10;
+
+    @include flex(row,space-around,center);
+    .top {
+        @include flex(row,space-between,center);
+        opacity: 0.95;
+
+        width: 40%;
+        h3 {
+            @include font(regular,1.25rem,$backgroundc,24px);
+            font-family: Arial, Helvetica, sans-serif;
+            @media(max-width:600px) {
+                width: 100%;
+                text-align: center;
+                @include font(regular,1.5rem,$backgroundc,24px);
+                margin-bottom: 10px
+            }
+        }
+        h2::after {
+            @media(max-width:600px) {
+                content: '︿';
+                @include font(bolder,5rem,blue ,100%);
+            }   
+        }
+
+
+    @media(max-width:600px) {
+        width: 100%;
+        align-self: center;
+        @include flex(column,flex-start,center);
+    }
+    }
+
+    .bottom {
+        width: 100%;
+        @include flex(row,space-between,center);
+        @media(max-width:600px) {
+            width: 200px;
+            align-self: center;
+            display: none;
+            opacity: 0;
+        }
+    }
+
+    .open {
+        @include flex(column,flex-start,flex-start);
+        opacity: 1;
+        transition: opacity 600ms ease-in-out 2s;
+    }
+    @media(max-width:600px) {
+        @include flex(column,flex-start,center);
+    }
+}
+
+a {
+    @include font(regular,1.25rem,$backgroundc,24px);
+    margin: 0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    z-index: 1000;
+    @media(max-width:600px) {   
+        @include font(regular,1.75rem,$backgroundc,50px);
+
+    }
+}
+
+a.active-link {
+    color: black;
+    font-weight: bold
+}
+
+
+.down_arrow {
+    display: none;
+    @media(max-width:600px) {
+        display: block
+    }
+}
+
+.up_arrow {
+    display: none;
+    @media(max-width:600px) {
+        display: none
+    }
+}
