@@ -23,19 +23,19 @@ nav {
     width: 100%;
     box-sizing: border-box;
     position:fixed;
+    background: white;
     top: 0;
-    background-color: #F9AD2E;
-    padding: 20px;
     z-index: 10;
-
-    @include flex(row,space-around,center);
+    
+    @include flex(row,space-around,space-around);
     .top {
         @include flex(row,space-between,center);
         opacity: 0.95;
-
+        background-color: #F9AD2E;
+        padding: 20px;
         width: 40%;
         h3 {
-            @include font(regular,1.25rem,$backgroundc,24px);
+            @include font(regular,1.25rem,black,24px);
             font-family: Arial, Helvetica, sans-serif;
             @media(max-width:600px) {
                 width: 100%;
@@ -61,6 +61,8 @@ nav {
 
     .bottom {
         width: 100%;
+        background-color: #F9AD2E;
+        padding: 20px;
         @include flex(row,space-between,center);
         @media(max-width:600px) {
             width: 200px;
@@ -110,4 +112,9 @@ a.active-link {
     @media(max-width:600px) {
         display: none
     }
+}
+
+.logo {
+    width: 8%;
+    margin: 10px;
 }
