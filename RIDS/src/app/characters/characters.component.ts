@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {AuthService} from '../auth.service'
 import { PostPlayer, Player } from '../game';
 import {GameService} from '../game.service'
@@ -11,7 +11,8 @@ import {GameService} from '../game.service'
 export class CharactersComponent implements OnInit {
 
   profileJson: object = null;
-  characters: object[] = [];
+  @Input() characters = null;
+
   chosenCharacter: object = {};
   @ViewChild('char') character;
   @ViewChild('boy') boy;
@@ -30,20 +31,20 @@ export class CharactersComponent implements OnInit {
   constructor(public auth: AuthService, public _gameService: GameService) { }
 
   ngOnInit(): void {
-    this.auth.userProfile$.subscribe(
-      profile => {
-        console.log(profile, 'this is the prifile')
-        this.profileJson = profile
-        if (this.profileJson) {
-          this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => {
-            console.log("data is ", data)
-            this.characters = data;
-            this.chosenCharacter = data[0];
-          }
-            )
-        }
-        }
-    );
+    // this.auth.userProfile$.subscribe(
+    //   profile => {
+    //     console.log(profile, 'this is the prifile')
+    //     this.profileJson = profile
+    //     if (this.profileJson) {
+    //       this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => {
+    //         console.log("data is ", data)
+    //         this.characters = data;
+    //         this.chosenCharacter = data[0];
+    //       }
+    //         )
+    //     }
+    //     }
+    // );
   }
 
   who(gender) {
