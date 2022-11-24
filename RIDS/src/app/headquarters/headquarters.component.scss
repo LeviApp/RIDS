@@ -2,6 +2,10 @@
     display: flex;
     background: linear-gradient(rgb(255,255,255,0.75), rgb(255,255,255,0.75)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7aYCYCe8qYDhhIaQQ2V8llq76NQ0QZZCL-4Y1TcjBW7s996-014ZsAxIRr3DLK-Hn02A&usqp=CAU");
     width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+
     section {
         width: 50%;
     }
