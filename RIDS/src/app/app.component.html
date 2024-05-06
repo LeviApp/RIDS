@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<footer>
+<!-- <footer>
     <button class="footer-btn" (click)="toggleOpen($event)" value="mapbutton">MAP</button>
     <div class='signup'>
       <h3 *ngIf="!auth.loggedIn">Ready to solve the case?</h3>
@@ -29,7 +29,7 @@
       <h1 *ngIf="auth.userProfile$ | async as profile">{{profile.sub}}</h1>
     </div>
     <button class="footer-btn" (click)="toggleOpen($event)"  value="notesbutton">CASE NOTES</button>
-</footer>
+</footer> -->
 </div>
 <map *ngIf="map_open"></map>
 <form [formGroup]="NotesForm" class="notes" *ngIf="notes_open" (ngSubmit)="noteSubmit()">
