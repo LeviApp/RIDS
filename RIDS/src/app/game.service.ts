@@ -18,8 +18,11 @@ export class GameService {
   private _placeurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/places/';
   private _witnessurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/witnesses/';
   private _responseurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/responses/';
+  private _caseurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/cases/';
+  private _usercaseurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/filtered-cases/';
 
-  private _playerurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/filtered-players/';
+  private _playerurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/players/';
+  private _filteredplayerurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/filtered-players/';
   private _chosenPlayer;
   constructor(private http: HttpClient) { }
   getCities(val): Observable<City[]> {
@@ -42,10 +45,19 @@ export class GameService {
   getPlayers(userID): Observable<Player[]> {
     const headers = {'userid': userID}
     console.log(userID, "userID")
-    return this.http.get<Player[]>(this._playerurl, { headers })
+    return this.http.get<Player[]>(this._filteredplayerurl, { headers })
   }
   addPlayer(playerD: PostPlayer) {
     return this.http.post(this._playerurl, playerD)
+  }
+  addCase(userID: PostPlayer) {
+    const newCase = {'user_id': userID}
+    return this.http.post(this._caseurl, newCase)
+  }
+  getPlayerCase(userID): Observable<object[]> {
+    const headers = {'userid': userID}
+    console.log(userID, "userID and CASE")
+    return this.http.get<object[]>(this._usercaseurl, { headers })
   }
 
   get getChosen(): object {
