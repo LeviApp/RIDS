@@ -10,26 +10,38 @@ import { GameService } from '../game.service';
 export class HeadquartersComponent implements OnInit {
 
   profileJson: object = null;
-  characters: object[] = [];
-  chosenCharacter: object = {};
+  playerCharacter: object = {};
+  cases: object[] = [];
+
 
   constructor(public auth: AuthService, public _gameService: GameService) { }
 
   ngOnInit(): void {
     this.auth.userProfile$.subscribe(
       profile => {
-        console.log(profile, 'this is the prifile')
         this.profileJson = profile
+        const userId = this.profileJson["sub"].split("|")[1];
         if (this.profileJson) {
-          this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => {
+          this._gameService.getPlayerCase(userId).subscribe(data => {
+            console.log("case data is ", data)
+            this.cases = data;
+          })
+          this._gameService.getPlayers(userId).subscribe(data => {
             console.log("data is in HEADQUARTERS", data)
-            this.characters = data;
-            this.chosenCharacter = data[0];
+            this.playerCharacter = data[0];
           }
             )
         }
         }
     );
+  }
+
+  addCase() {
+    const userId = this.profileJson["sub"].split("|")[1];
+    this._gameService.addCase(userId).subscribe((data) => {
+      console.log("case added!", {data})
+
+    })
   }
 
 }

@@ -1,10 +1,28 @@
 <div class="hq">
-    <section>
-        <app-characters [characters]="characters"></app-characters>
-        <app-chardetails></app-chardetails>
-        <app-locale></app-locale>
-    </section>
-    <section>
-        <app-case></app-case>
-    </section>
+    <div>
+        <section>
+            <app-characters [playerCharacter]="playerCharacter"></app-characters>
+            <app-chardetails></app-chardetails>
+            <app-locale></app-locale>
+        </section>
+        <section>
+            <app-case></app-case>
+        </section>
+    </div>
+    <div class="cases" *ngIf="cases.length === 0">
+        <h2>YOUR CASES</h2>
+        <div>
+            <button (click)="addCase()">
+                <h1>+</h1>
+            </button>
+        </div>
+    </div>
+    <div class="cases" *ngIf="cases.length === 1">
+        <h2>YOUR CASES</h2>
+        <div>
+            <button>
+                <img src="assets/img/ClassifiedDocument.png" alt="">
+            </button>
+        </div>
+    </div>
 </div>

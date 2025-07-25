@@ -1,21 +1,30 @@
-
-<div  class='characters'>
-    <h2>YOUR CHARACTERS</h2>
-    <div class="outerChar" *ngIf="characters">
-      <div class='character' *ngFor="let character of characters">
-          <button>
-          <img src='https://openclipart.org/image/2000px/159901'/>
-          <p>{{character.name}}</p>
-          </button>
-      </div>
-      <button class="addChar">+</button> 
+<div class='characters'>
+    <h2>Choose Your Lawman</h2>
+    <div class="outerChar" *ngIf="defaultCharacters">
+        <div class='character' *ngFor="let character of defaultCharacters">
+            <button [ngClass]="{'selected': selectedCharacter.name === character.name}" (click)="selectCharacter(character)">
+                <img [src]="characterImageUrl(character.name)" />
+                <p>{{character.name}}</p>
+            </button>
+        </div>
+        <div class='selectedCharacter'>
+            <p>{{ selectedCharacter.name }}</p>
+            <section class="imgContainer">
+                <img [src]="characterImageUrl(selectedCharacter.name)" />
+                <p>{{selectedCharacter.description}}</p>
+            </section>
+            <button class='deputize'
+            (click)='postCharacter("")'>★ Deputize!</button>
+        </div>
     </div>
-    <h1 *ngIf="!characters">It is loading...</h1>        
+    <h1 *ngIf="!defaultCharacters">Characters are loading...</h1>
 </div>
 
-<!-- <div class="profile">
+<div class="profile">
     <h3 *ngIf="auth.userProfile$ | async as profile">{{profile.name}}</h3>
-    <button (click)="addCharacter()">Add Character</button>
+    <button (click)="addCharacter()">
+        <h1>+</h1>
+    </button>
     <div class="add" #char>
         <div>
             <h4 class="boy" (click)="who('boy')" #boy>Cowboy</h4>
@@ -23,7 +32,7 @@
         </div>
         <div class='char-form'>
             <h5>Name:</h5>
-            <input type="text" value="{{name}}" #nameI/>
+            <input type="text" value="{{name}}" #nameI />
         </div>
         <div class='char-form'>
             <h5>Description:</h5>
@@ -35,7 +44,7 @@
         </div>
         <div class='char-form'>
             <h5>Question Place:</h5>
-            <input type="text" value="Do you remember where the crime took place?" #qpI/>
+            <input type="text" value="Do you remember where the crime took place?" #qpI />
         </div>
         <div class='char-form'>
             <h5>Question Weapon:</h5>
@@ -45,23 +54,7 @@
             <h5>Goodbye:</h5>
             <input type="text" value="Have a wonderful day!" #goodbyeI />
         </div>
-        <button class='deputize' *ngIf="auth.userProfile$ | async as profile" (click)='postCharacter(profile.sub.substr(6))'>★ Deputize!</button>
+        <button class='deputize' *ngIf="auth.userProfile$ | async as profile"
+            (click)='postCharacter(profile.sub.split("|")[1])'>★ Deputize!</button>
     </div>
 </div>
-
-<div class='char-contain'>
-    <profile id='pro'></profile>
-    <div id='field' #file>
-      <div class='character' *ngFor="let character of characters">
-        <a routerLink='/Denver' routerLinkActive="active-link" *ngIf="auth.loggedIn">
-          <button>
-          <img src='https://icon2.cleanpng.com/20171221/ssq/cowboy-silhouette-png-clip-art-image-5a3bd872804bf9.0040361515138714745255.jpg'/>
-          <h1>HELLO!</h1>
-          <h1>{{chosenCharacter.name}}</h1>
-          </button>          
-        </a>
-
-
-      </div>
-    </div>
-</div> -->

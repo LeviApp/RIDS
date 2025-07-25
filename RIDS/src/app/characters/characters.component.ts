@@ -1,19 +1,23 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {AuthService} from '../auth.service'
 import { PostPlayer, Player } from '../game';
 import {GameService} from '../game.service'
+
+export interface Character {
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, AfterViewInit {
 
   profileJson: object = null;
-  @Input() characters = null;
+  @Input() playerCharacter = null;
 
-  chosenCharacter: object = {};
   @ViewChild('char') character;
   @ViewChild('boy') boy;
   @ViewChild('girl') girl;
@@ -27,24 +31,35 @@ export class CharactersComponent implements OnInit {
   description: string = '';
   playerReq: PostPlayer;
   playerRes: Player;
+  defaultCharacters: object[] = [];
+  selectedCharacter: Character = { name: '', description: '' };
 
   constructor(public auth: AuthService, public _gameService: GameService) { }
 
   ngOnInit(): void {
-    // this.auth.userProfile$.subscribe(
-    //   profile => {
-    //     console.log(profile, 'this is the prifile')
-    //     this.profileJson = profile
-    //     if (this.profileJson) {
-    //       this._gameService.getPlayers(this.profileJson["sub"].substr(6)).subscribe(data => {
-    //         console.log("data is ", data)
-    //         this.characters = data;
-    //         this.chosenCharacter = data[0];
-    //       }
-    //         )
-    //     }
-    //     }
-    // );
+    console.log("PLAYER IS", this.playerCharacter)
+    if (Object.keys(this.playerCharacter).length === 0) {
+      this._gameService.getPlayers("preset").subscribe(data => {
+        this.defaultCharacters = data;
+        this.selectedCharacter = Object.keys(this.playerCharacter).length !== 0 ? {
+          name: this.playerCharacter.name,
+          description:  this.playerCharacter.description
+        } : {
+          name: data[0].name,
+          description: data[0].description
+        }
+      }
+        )
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.name = "Jim Carson"
+    this.description = "My name is Carson, Jim Carson. I am a tall, young man with hair as black as night. I can handle myself in a fight, and can outdraw any outlaw. I wear the badge proudly as I seek to bring reform in the middle of a barren dust storm called the West, the Wild West."
+    this.boy.nativeElement.style.backgroundColor = "darkorange"
+    this.boy.nativeElement.style.color = "white"
+    this.girl.nativeElement.style.backgroundColor = "white"
+    this.girl.nativeElement.style.color = "orange"
   }
 
   who(gender) {
@@ -53,10 +68,8 @@ export class CharactersComponent implements OnInit {
       this.description = "My name is Carson, Jim Carson. I am a tall, young man with hair as black as night. I can handle myself in a fight, and can outdraw any outlaw. I wear the badge proudly as I seek to bring reform in the middle of a barren dust storm called the West, the Wild West."
       this.boy.nativeElement.style.backgroundColor = "darkorange"
       this.boy.nativeElement.style.color = "white"
-      this.boy.nativeElement.style.border = "2px solid white"
       this.girl.nativeElement.style.backgroundColor = "white"
       this.girl.nativeElement.style.color = "orange"
-      this.girl.nativeElement.style.border = "2px solid black"
       console.log(this.profileJson)
     }
     else {
@@ -64,10 +77,20 @@ export class CharactersComponent implements OnInit {
       this.description = "My name is Brooks, Melanie Brooks. My long, brown hair flashes in the sun. I am tougher than the toughest of cowboys. Many forget that I know how to use a gun. I wear the badge proudly as I seek to bring reform in the middle of a barren dust storm called the West, the Wild West."
       this.girl.nativeElement.style.backgroundColor = "darkorange"
       this.girl.nativeElement.style.color = "white"
-      this.girl.nativeElement.style.border = "2px solid white"
       this.boy.nativeElement.style.backgroundColor = "white"
       this.boy.nativeElement.style.color = "orange"
-      this.boy.nativeElement.style.border = "2px solid black"
+    }
+  }
+
+  characterImageUrl(characterName): string {
+    const cleanedName = characterName.replace(/ /g, ''); // Remove all spaces
+    return `assets/img/caricatures/${cleanedName}.png`;
+  }
+
+  selectCharacter(character) {
+    this.selectedCharacter = {
+      name: character.name,
+      description: character.description
     }
   }
 
@@ -85,16 +108,19 @@ export class CharactersComponent implements OnInit {
     this.playerReq.city_id = 1;
     this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
       this.playerRes = res;
-      this.characters = [...this.characters, this.playerRes]
+      this.playerCharacter = [...this.playerCharacter, this.playerRes]
     })
-
   }
   addCharacter() {
-    if (this.character.nativeElement.style.display === "none") {
+    console.log("open the char", this.character.nativeElement.style.display)
+    if (!this.character.nativeElement.style.display) {
       this.character.nativeElement.style.display = "flex"
+      console.log("good")
     }
     else {
-      this.character.nativeElement.style.display = "none"
+      this.character.nativeElement.style.display = "none";
+      console.log("bad")
+
     }
 }
 
