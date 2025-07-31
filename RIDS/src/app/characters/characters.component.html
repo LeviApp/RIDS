@@ -1,4 +1,19 @@
-<div class='characters'>
+<div class='user-character' [ngClass]="{'hiddenCharacter': selectingCharacter}">
+    <section class="character-selection">
+        <img [src]="characterImageUrl(selectedCharacter.name)" />
+        <button (click)="openSelectCharacterSection()">Change Lawman</button>
+    </section>
+    <section class="character-details">
+        <h3>Rank</h3>
+        <p>{{ selectedCharacter.rank }}</p>
+        <h3>Name</h3>
+        <p>{{ selectedCharacter.name }}</p>
+        <h3>Description</h3>
+        <p>{{ selectedCharacter.description }}</p>
+    </section>
+</div>
+
+<div class='characters' [ngClass]="{'hiddenCharacter': !selectingCharacter}">
     <h2>Choose Your Lawman</h2>
     <div class="outerChar" *ngIf="defaultCharacters">
         <div class='character' *ngFor="let character of defaultCharacters">
@@ -14,47 +29,8 @@
                 <p>{{selectedCharacter.description}}</p>
             </section>
             <button class='deputize'
-            (click)='postCharacter("")'>★ Deputize!</button>
+            (click)='postCharacter("")'>★ Commission!</button>
         </div>
     </div>
     <h1 *ngIf="!defaultCharacters">Characters are loading...</h1>
-</div>
-
-<div class="profile">
-    <h3 *ngIf="auth.userProfile$ | async as profile">{{profile.name}}</h3>
-    <button (click)="addCharacter()">
-        <h1>+</h1>
-    </button>
-    <div class="add" #char>
-        <div>
-            <h4 class="boy" (click)="who('boy')" #boy>Cowboy</h4>
-            <h4 class="girl" (click)="who('girl')" #girl>Cowgirl</h4>
-        </div>
-        <div class='char-form'>
-            <h5>Name:</h5>
-            <input type="text" value="{{name}}" #nameI />
-        </div>
-        <div class='char-form'>
-            <h5>Description:</h5>
-            <textarea type="text" rows='5' value="{{description}}" #descriptionI></textarea>
-        </div>
-        <div class='char-form'>
-            <h5>Question Suspect:</h5>
-            <input type="text" value="What does the suspect look like?" #qsI />
-        </div>
-        <div class='char-form'>
-            <h5>Question Place:</h5>
-            <input type="text" value="Do you remember where the crime took place?" #qpI />
-        </div>
-        <div class='char-form'>
-            <h5>Question Weapon:</h5>
-            <input type="text" value="Did you notice if the suspect had a weapon?" #qwI />
-        </div>
-        <div class='char-form'>
-            <h5>Goodbye:</h5>
-            <input type="text" value="Have a wonderful day!" #goodbyeI />
-        </div>
-        <button class='deputize' *ngIf="auth.userProfile$ | async as profile"
-            (click)='postCharacter(profile.sub.split("|")[1])'>★ Deputize!</button>
-    </div>
 </div>

@@ -4,6 +4,7 @@ import { PostPlayer, Player } from '../game';
 import {GameService} from '../game.service'
 
 export interface Character {
+  rank: string;
   name: string;
   description: string;
 }
@@ -32,25 +33,29 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   playerReq: PostPlayer;
   playerRes: Player;
   defaultCharacters: object[] = [];
-  selectedCharacter: Character = { name: '', description: '' };
+  selectedCharacter: Character = { rank: '', name: '', description: '' };
+  selectingCharacter: boolean = false;
+
 
   constructor(public auth: AuthService, public _gameService: GameService) { }
 
   ngOnInit(): void {
-    console.log("PLAYER IS", this.playerCharacter)
-    if (Object.keys(this.playerCharacter).length === 0) {
       this._gameService.getPlayers("preset").subscribe(data => {
         this.defaultCharacters = data;
         this.selectedCharacter = Object.keys(this.playerCharacter).length !== 0 ? {
+          rank: this.playerCharacter.rank,
           name: this.playerCharacter.name,
           description:  this.playerCharacter.description
         } : {
+          rank: data[0].rank,
           name: data[0].name,
           description: data[0].description
         }
+        
+        this.selectingCharacter = Object.keys(this.playerCharacter).length === 0 ? true : false;
       }
         )
-    }
+
   }
 
   ngAfterViewInit(): void {
@@ -89,27 +94,34 @@ export class CharactersComponent implements OnInit, AfterViewInit {
 
   selectCharacter(character) {
     this.selectedCharacter = {
+      rank: character.rank,
       name: character.name,
       description: character.description
     }
   }
 
+  openSelectCharacterSection() {
+    console.log("RUNNING THE SELECT!")
+    this.selectingCharacter = true;
+  }
+
   postCharacter(token) {
-    this.playerReq = new PostPlayer();
-    this.playerReq.user_id = token;
-    this.playerReq.rank = "Deputy";
-    this.playerReq.name = this.nameI.nativeElement.value;
-    this.playerReq.description = this.descriptionI.nativeElement.value;
-    this.playerReq.question_suspect = this.qsI.nativeElement.value;
-    this.playerReq.question_place = this.qpI.nativeElement.value;
-    this.playerReq.question_weapon = this.qwI.nativeElement.value;
-    this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
-    this.playerReq.place_id = 1;
-    this.playerReq.city_id = 1;
-    this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
-      this.playerRes = res;
-      this.playerCharacter = [...this.playerCharacter, this.playerRes]
-    })
+    this.selectingCharacter = false;
+    // this.playerReq = new PostPlayer();
+    // this.playerReq.user_id = token;
+    // this.playerReq.rank = "Deputy";
+    // this.playerReq.name = this.nameI.nativeElement.value;
+    // this.playerReq.description = this.descriptionI.nativeElement.value;
+    // this.playerReq.question_suspect = this.qsI.nativeElement.value;
+    // this.playerReq.question_place = this.qpI.nativeElement.value;
+    // this.playerReq.question_weapon = this.qwI.nativeElement.value;
+    // this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
+    // this.playerReq.place_id = 1;
+    // this.playerReq.city_id = 1;
+    // this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
+    //   this.playerRes = res;
+    //   this.playerCharacter = [...this.playerCharacter, this.playerRes]
+    // })
   }
   addCharacter() {
     console.log("open the char", this.character.nativeElement.style.display)

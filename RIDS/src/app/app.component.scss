@@ -137,6 +137,10 @@ footer {
     
 }
 
+.notLoggedIn {
+    justify-content: center;  
+}
+
 a {
     @include font(regular,1.25rem,$backgroundc,24px);
     margin: 0 10px;
