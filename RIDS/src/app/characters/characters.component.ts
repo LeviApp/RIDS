@@ -7,6 +7,8 @@ export interface Character {
   rank: string;
   name: string;
   description: string;
+  city_id: number;
+  place_id: number;
 }
 
 @Component({
@@ -33,8 +35,10 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   playerReq: PostPlayer;
   playerRes: Player;
   defaultCharacters: object[] = [];
-  selectedCharacter: Character = { rank: '', name: '', description: '' };
+  selectedCharacter: Character = { rank: '', name: '', description: '', city_id: 1, place_id: 1 };
   selectingCharacter: boolean = false;
+  currentCity: string = "";
+  currentPlace: string = "";
 
 
   constructor(public auth: AuthService, public _gameService: GameService) { }
@@ -45,11 +49,15 @@ export class CharactersComponent implements OnInit, AfterViewInit {
         this.selectedCharacter = Object.keys(this.playerCharacter).length !== 0 ? {
           rank: this.playerCharacter.rank,
           name: this.playerCharacter.name,
-          description:  this.playerCharacter.description
+          description:  this.playerCharacter.description,
+          city_id:  this.playerCharacter.city_id,
+          place_id:  this.playerCharacter.place_id
         } : {
           rank: data[0].rank,
           name: data[0].name,
-          description: data[0].description
+          description: data[0].description,
+          city_id:   data[0].city_id,
+          place_id:  data[0].place_id
         }
         
         this.selectingCharacter = Object.keys(this.playerCharacter).length === 0 ? true : false;
@@ -94,10 +102,14 @@ export class CharactersComponent implements OnInit, AfterViewInit {
 
   selectCharacter(character) {
     this.selectedCharacter = {
-      rank: character.rank,
+      rank: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.rank : character.rank,
       name: character.name,
-      description: character.description
+      description: character.description,
+      city_id: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.city_id : character.city_id,
+      place_id: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.place_id : character.place_id
     }
+    this.currentCity = this.getCity(character.city_id)
+    this.currentPlace = this.getPlace(character.place_id)
   }
 
   openSelectCharacterSection() {
@@ -134,6 +146,20 @@ export class CharactersComponent implements OnInit, AfterViewInit {
       console.log("bad")
 
     }
+}
+
+getCity(id) {
+  this._gameService.getCity(id).subscribe(data => {
+    this.currentCity = data.name
+  })
+  return "";
+}
+
+getPlace(id) {
+  this._gameService.getPlace(id).subscribe(data => {
+    this.currentPlace = data.name
+  })
+  return "";
 }
 
 }

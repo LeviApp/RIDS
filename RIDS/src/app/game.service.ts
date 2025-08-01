@@ -25,14 +25,22 @@ export class GameService {
   private _filteredplayerurl: string = 'https://reforminduststorms.onrender.com/murderincolor/api/filtered-players/';
   private _chosenPlayer;
   constructor(private http: HttpClient) { }
-  getCities(val): Observable<City[]> {
+  getCities(): Observable<City[]> {
     console.log('city api fired')
-    return this.http.get<City[]>(this._cityurl + val)
+    return this.http.get<City[]>(this._cityurl)
+  }
 
+  getCity(val): Observable<City> {
+    console.log('city api fired')
+    return this.http.get<City>(this._cityurl + val)
   }
 
   getPlaces(): Observable<Place[]> {
     return this.http.get<Place[]>(this._placeurl)
+  }
+
+  getPlace(val): Observable<Place> {
+    return this.http.get<Place>(this._placeurl + val)
   }
 
   getWitnesses(): Observable<Witness[]> {
