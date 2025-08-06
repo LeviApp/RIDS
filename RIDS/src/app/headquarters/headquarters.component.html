@@ -1,11 +1,9 @@
 <div class="hq" *ngIf="auth.loggedIn">
         <section class="character">
             <app-characters [playerCharacter]="playerCharacter"></app-characters>
-            <!-- <app-chardetails></app-chardetails>
-            <app-locale></app-locale> -->
         </section>
         <section class="case">
-            <!-- <app-case></app-case> -->
+            <app-case [profileJson]="profileJson"></app-case>
         </section>
         <!-- <h2>YOUR CASES</h2>
         <div>

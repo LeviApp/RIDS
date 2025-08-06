@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { GameService } from '../game.service';
+import { PlayerCharacter } from '../game';
 
 @Component({
   selector: 'app-headquarters',
@@ -10,7 +11,19 @@ import { GameService } from '../game.service';
 export class HeadquartersComponent implements OnInit {
 
   profileJson: object = null;
-  playerCharacter: object = {};
+  playerCharacter: PlayerCharacter = {
+    id: 0,
+    user_id: '',
+    rank: '',
+    name: '',
+    description: '',
+    question_suspect: '',
+    question_place: '',
+    question_weapon: '',
+    goodbye: '',
+    city_id: 1,
+    place_id: 1,
+  };
   cases: object[] = [];
 
 
@@ -28,7 +41,9 @@ export class HeadquartersComponent implements OnInit {
           })
           this._gameService.getPlayers(userId).subscribe(data => {
             console.log("data is in HEADQUARTERS", data)
-            this.playerCharacter = data[0];
+            if (data.length) {
+              this.playerCharacter = data[0];
+            }
           }
             )
         }
@@ -38,7 +53,7 @@ export class HeadquartersComponent implements OnInit {
 
   addCase() {
     const userId = this.profileJson["sub"].split("|")[1];
-    this._gameService.addCase(userId).subscribe((data) => {
+    this._gameService.addCase(userId, 0).subscribe((data) => {
       console.log("case added!", {data})
 
     })

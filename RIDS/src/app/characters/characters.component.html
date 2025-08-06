@@ -1,23 +1,23 @@
-<div class='user-character' [ngClass]="{'hiddenCharacter': selectingCharacter}">
+<div class='user-character' [ngClass]="{'hiddenCharacter': selectingCharacter || playerCharacter.id === 0}">
     <section class="character-selection">
         <img [src]="characterImageUrl(selectedCharacter.name)" />
         <button (click)="openSelectCharacterSection()">Change Lawman</button>
     </section>
     <section class="character-details">
         <h3>Rank</h3>
-        <p>{{ selectedCharacter.rank }}</p>
+        <p>{{ playerCharacter.rank }}</p>
         <h3>Name</h3>
-        <p>{{ selectedCharacter.name }}</p>
+        <p>{{ playerCharacter.name }}</p>
         <h3>Current City</h3>
         <p>{{ currentCity }}</p>
         <h3>Current Place</h3>
         <p>{{ currentPlace }}</p>
         <h3>Description</h3>
-        <p>{{ selectedCharacter.description }}</p>
+        <p>{{ playerCharacter.description }}</p>
     </section>
 </div>
 
-<div class='characters' [ngClass]="{'hiddenCharacter': !selectingCharacter}">
+<div class='characters' [ngClass]="{'hiddenCharacter': !selectingCharacter }">
     <h2>Choose Your Lawman</h2>
     <div class="outerChar" *ngIf="defaultCharacters">
         <div class='character' *ngFor="let character of defaultCharacters">

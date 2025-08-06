@@ -1,15 +1,7 @@
 import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {AuthService} from '../auth.service'
-import { PostPlayer, Player } from '../game';
+import { PostPlayer, PlayerCharacter, SelectedCharacter } from '../game';
 import {GameService} from '../game.service'
-
-export interface Character {
-  rank: string;
-  name: string;
-  description: string;
-  city_id: number;
-  place_id: number;
-}
 
 @Component({
   selector: 'app-characters',
@@ -33,9 +25,9 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   name: string = '';
   description: string = '';
   playerReq: PostPlayer;
-  playerRes: Player;
+  playerRes: PlayerCharacter;
   defaultCharacters: object[] = [];
-  selectedCharacter: Character = { rank: '', name: '', description: '', city_id: 1, place_id: 1 };
+  selectedCharacter: SelectedCharacter = { name: '', description: '' };
   selectingCharacter: boolean = false;
   currentCity: string = "";
   currentPlace: string = "";
@@ -46,21 +38,17 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
       this._gameService.getPlayers("preset").subscribe(data => {
         this.defaultCharacters = data;
-        this.selectedCharacter = Object.keys(this.playerCharacter).length !== 0 ? {
-          rank: this.playerCharacter.rank,
+        this.selectedCharacter = this.playerCharacter.id !== 0 ? {
           name: this.playerCharacter.name,
           description:  this.playerCharacter.description,
-          city_id:  this.playerCharacter.city_id,
-          place_id:  this.playerCharacter.place_id
         } : {
-          rank: data[0].rank,
           name: data[0].name,
-          description: data[0].description,
-          city_id:   data[0].city_id,
-          place_id:  data[0].place_id
+          description: data[0].description
         }
         
-        this.selectingCharacter = Object.keys(this.playerCharacter).length === 0 ? true : false;
+        this.selectingCharacter = this.playerCharacter.id === 0 ? true : false;
+        console.log("TRUST", this.selectingCharacter)
+
       }
         )
 
@@ -73,6 +61,8 @@ export class CharactersComponent implements OnInit, AfterViewInit {
     this.boy.nativeElement.style.color = "white"
     this.girl.nativeElement.style.backgroundColor = "white"
     this.girl.nativeElement.style.color = "orange"
+
+    console.log("TRUST", this.playerCharacter)
   }
 
   who(gender) {
@@ -102,14 +92,9 @@ export class CharactersComponent implements OnInit, AfterViewInit {
 
   selectCharacter(character) {
     this.selectedCharacter = {
-      rank: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.rank : character.rank,
       name: character.name,
       description: character.description,
-      city_id: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.city_id : character.city_id,
-      place_id: Object.keys(this.playerCharacter).length !== 0 ? this.playerCharacter.place_id : character.place_id
     }
-    this.currentCity = this.getCity(character.city_id)
-    this.currentPlace = this.getPlace(character.place_id)
   }
 
   openSelectCharacterSection() {
@@ -119,6 +104,8 @@ export class CharactersComponent implements OnInit, AfterViewInit {
 
   postCharacter(token) {
     this.selectingCharacter = false;
+    this.playerCharacter.id = 1;
+
     // this.playerReq = new PostPlayer();
     // this.playerReq.user_id = token;
     // this.playerReq.rank = "Deputy";
@@ -134,6 +121,8 @@ export class CharactersComponent implements OnInit, AfterViewInit {
     //   this.playerRes = res;
     //   this.playerCharacter = [...this.playerCharacter, this.playerRes]
     // })
+    this.currentCity = this.getCity(this.playerCharacter.city_id)
+    this.currentPlace = this.getPlace(this.playerCharacter.place_id)
   }
   addCharacter() {
     console.log("open the char", this.character.nativeElement.style.display)
