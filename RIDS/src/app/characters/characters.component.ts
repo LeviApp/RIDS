@@ -1,12 +1,7 @@
 import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {AuthService} from '../auth.service'
-import { PostPlayer, Player } from '../game';
+import { PostPlayer, PlayerCharacter, SelectedCharacter } from '../game';
 import {GameService} from '../game.service'
-
-export interface Character {
-  name: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-characters',
@@ -30,27 +25,33 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   name: string = '';
   description: string = '';
   playerReq: PostPlayer;
-  playerRes: Player;
+  playerRes: PlayerCharacter;
   defaultCharacters: object[] = [];
-  selectedCharacter: Character = { name: '', description: '' };
+  selectedCharacter: SelectedCharacter = { name: '', description: '' };
+  selectingCharacter: boolean = false;
+  currentCity: string = "";
+  currentPlace: string = "";
+
 
   constructor(public auth: AuthService, public _gameService: GameService) { }
 
   ngOnInit(): void {
-    console.log("PLAYER IS", this.playerCharacter)
-    if (Object.keys(this.playerCharacter).length === 0) {
       this._gameService.getPlayers("preset").subscribe(data => {
         this.defaultCharacters = data;
-        this.selectedCharacter = Object.keys(this.playerCharacter).length !== 0 ? {
+        this.selectedCharacter = this.playerCharacter.id !== 0 ? {
           name: this.playerCharacter.name,
-          description:  this.playerCharacter.description
+          description:  this.playerCharacter.description,
         } : {
           name: data[0].name,
           description: data[0].description
         }
+        
+        this.selectingCharacter = this.playerCharacter.id === 0 ? true : false;
+        console.log("TRUST", this.selectingCharacter)
+
       }
         )
-    }
+
   }
 
   ngAfterViewInit(): void {
@@ -60,6 +61,8 @@ export class CharactersComponent implements OnInit, AfterViewInit {
     this.boy.nativeElement.style.color = "white"
     this.girl.nativeElement.style.backgroundColor = "white"
     this.girl.nativeElement.style.color = "orange"
+
+    console.log("TRUST", this.playerCharacter)
   }
 
   who(gender) {
@@ -90,26 +93,36 @@ export class CharactersComponent implements OnInit, AfterViewInit {
   selectCharacter(character) {
     this.selectedCharacter = {
       name: character.name,
-      description: character.description
+      description: character.description,
     }
   }
 
+  openSelectCharacterSection() {
+    console.log("RUNNING THE SELECT!")
+    this.selectingCharacter = true;
+  }
+
   postCharacter(token) {
-    this.playerReq = new PostPlayer();
-    this.playerReq.user_id = token;
-    this.playerReq.rank = "Deputy";
-    this.playerReq.name = this.nameI.nativeElement.value;
-    this.playerReq.description = this.descriptionI.nativeElement.value;
-    this.playerReq.question_suspect = this.qsI.nativeElement.value;
-    this.playerReq.question_place = this.qpI.nativeElement.value;
-    this.playerReq.question_weapon = this.qwI.nativeElement.value;
-    this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
-    this.playerReq.place_id = 1;
-    this.playerReq.city_id = 1;
-    this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
-      this.playerRes = res;
-      this.playerCharacter = [...this.playerCharacter, this.playerRes]
-    })
+    this.selectingCharacter = false;
+    this.playerCharacter.id = 1;
+
+    // this.playerReq = new PostPlayer();
+    // this.playerReq.user_id = token;
+    // this.playerReq.rank = "Deputy";
+    // this.playerReq.name = this.nameI.nativeElement.value;
+    // this.playerReq.description = this.descriptionI.nativeElement.value;
+    // this.playerReq.question_suspect = this.qsI.nativeElement.value;
+    // this.playerReq.question_place = this.qpI.nativeElement.value;
+    // this.playerReq.question_weapon = this.qwI.nativeElement.value;
+    // this.playerReq.goodbye = this.goodbyeI.nativeElement.value;
+    // this.playerReq.place_id = 1;
+    // this.playerReq.city_id = 1;
+    // this._gameService.addPlayer(this.playerReq).subscribe((res: Player) => {
+    //   this.playerRes = res;
+    //   this.playerCharacter = [...this.playerCharacter, this.playerRes]
+    // })
+    this.currentCity = this.getCity(this.playerCharacter.city_id)
+    this.currentPlace = this.getPlace(this.playerCharacter.place_id)
   }
   addCharacter() {
     console.log("open the char", this.character.nativeElement.style.display)
@@ -122,6 +135,20 @@ export class CharactersComponent implements OnInit, AfterViewInit {
       console.log("bad")
 
     }
+}
+
+getCity(id) {
+  this._gameService.getCity(id).subscribe(data => {
+    this.currentCity = data.name
+  })
+  return "";
+}
+
+getPlace(id) {
+  this._gameService.getPlace(id).subscribe(data => {
+    this.currentPlace = data.name
+  })
+  return "";
 }
 
 }

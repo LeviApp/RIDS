@@ -111,6 +111,67 @@
     }
 }
 
+.user-character {
+    /* The align-self property is only useful if the parent is a flex container.
+       We'll remove it for a more general centering solution. */
+    /* align-self: center; */
+    
+    /* These styles define the internal layout of the div */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /* This is the key change to center the entire div horizontally.
+       It works because you have a defined width of 75%. */
+    width: 75%;
+    margin: 20px auto;
+
+    /* Now, let's style the children inside the centered div */
+    .character-selection {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        img {
+            width: 100%;
+        }
+        button {
+            width: 100%;
+            font-size: 1.5rem;
+            color: orange;
+            padding: 15px;
+            align-self: center;
+            background-color: white;
+            border: 2px solid white;
+        }
+
+        button:hover {
+            color: white;
+            background-color: darkorange;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+    }
+    .character-details {
+        width: 50%;
+        margin-left: 20px;
+        h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+    }
+}
+
+.hiddenCharacter {
+    display: none;
+}
+
+
 
 
 

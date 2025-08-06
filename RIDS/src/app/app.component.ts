@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
+    
     this.auth.userProfile$.subscribe(
       profile => {this.profileJson = profile}
     );
