@@ -1,6 +1,122 @@
 <div class="case">
-    <h2>Add Case File</h2>
-    <button (click)="createCaseFile()">
-        <img src="assets/img/ClassifiedDocument.png" alt="">
-    </button>
+    <ng-container *ngIf="playerCharacter.id !== 0 && !case">
+        <h2>Add Case File</h2>
+        <button (click)="createCaseFile()">
+            <img src="assets/img/ClassifiedDocument.png" alt="">
+        </button>
+    </ng-container>
+    <ng-container *ngIf="playerCharacter.id === 0">
+        <h2>Case Details</h2>
+        <section>
+            <h3>Case</h3>
+            <p>Murder in Color</p>
+        </section>
+        <section>
+            <h3>Days Left</h3>
+            <p>10</p>
+        </section>
+        <section>
+            <h3>Gender</h3>
+            <select name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </section>
+        <section>
+            <h3>Race</h3>
+            <select name="race">
+                <option value="mexican">Mexican</option>
+                <option value="indian">Indian</option>
+                <option value="european">European</option>
+                <option value="chinese">Chinese</option>
+                <option value="african">African</option>
+            </select>
+        </section>
+        <section>
+            <h3>Height</h3>
+            <select name="height">
+                <option value="short">Short</option>
+                <option value="average">Average</option>
+                <option value="tall">Tall</option>
+            </select>
+        </section>
+        <section>
+            <h3>Weight</h3>
+            <select name="weight">
+                <option value="thin">Thin</option>
+                <option value="average">Average</option>
+                <option value="heavy">Heavy</option>
+            </select>
+        </section>
+        <section>
+            <h3>Age</h3>
+            <select name="age">
+                <option value="young">Young</option>
+                <option value="middle-aged">Middle-Aged</option>
+                <option value="old">Old</option>
+            </select>
+        </section>
+        <section>
+            <h3>Hair Color</h3>
+            <select name="hairColor">
+                <option value="black">Black</option>
+                <option value="gray">Gray</option>
+                <option value="brown">Brown</option>
+                <option value="blond">Blond</option>
+                <option value="red">Red</option>
+            </select>
+        </section>
+        <section>
+            <h3>Face Feature</h3>
+            <select name="faceFeature">
+                <option value="ears">Ears</option>
+                <option value="eyebrows">Eyebrows</option>
+                <option value="nose">Nose</option>
+                <option value="mouth">Mouth</option>
+            </select>
+        </section>
+        <section>
+            <h3>Unique Feature</h3>
+            <select name="uniqueFeature">
+                <option value="scar">Scar</option>
+                <option value="glasses">Glasses</option>
+                <option value="limp">Limp</option>
+                <option value="missingTeeth">Missing Teeth</option>
+                <option value="mole">Mole</option>
+            </select>
+        </section>
+        <section>
+            <h3>Crime Place</h3>
+            <select name="uniqueFeature">
+                <option value="scar">Scar</option>
+                <option value="glasses">Glasses</option>
+                <option value="limp">Limp</option>
+                <option value="missingTeeth">Missing Teeth</option>
+                <option value="mole">Mole</option>
+            </select>
+        </section>
+        <section>
+            <h3>Weapon</h3>
+            <select name="uniqueFeature">
+                <option value="scar">Scar</option>
+                <option value="glasses">Glasses</option>
+                <option value="limp">Limp</option>
+                <option value="missingTeeth">Missing Teeth</option>
+                <option value="mole">Mole</option>
+            </select>
+        </section>
+        <section>
+            <h3>Clues Collected</h3>
+            <p>3</p>
+        </section>
+        <section>
+            <h3>Signatures Collected</h3>
+            <p>1</p>
+        </section>
+        <section>
+            <h3>Warrant Secured</h3>
+            <p>False</p>
+        </section>
+        <button class="caseSave">Save</button>
+    </ng-container>
 </div>

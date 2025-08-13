@@ -84,4 +84,3 @@ export interface Case {
     notebook: string;
     solved: boolean;
   }
-  
