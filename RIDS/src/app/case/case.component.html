@@ -7,6 +7,7 @@
     </ng-container>
     <ng-container *ngIf="playerCharacter.id === 0">
         <h2>Case Details</h2>
+        <form [formGroup]="caseForm">
         <section>
             <h3>Case</h3>
             <p>Murder in Color</p>
@@ -17,92 +18,79 @@
         </section>
         <section>
             <h3>Gender</h3>
-            <select name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+            <select formControlName="gender" name="gender">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['gender']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Race</h3>
-            <select name="race">
-                <option value="mexican">Mexican</option>
-                <option value="indian">Indian</option>
-                <option value="european">European</option>
-                <option value="chinese">Chinese</option>
-                <option value="african">African</option>
+            <select formControlName="race" name="race">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['race']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Height</h3>
-            <select name="height">
-                <option value="short">Short</option>
-                <option value="average">Average</option>
-                <option value="tall">Tall</option>
+            <select formControlName="height" name="height">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['height']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Weight</h3>
-            <select name="weight">
-                <option value="thin">Thin</option>
-                <option value="average">Average</option>
-                <option value="heavy">Heavy</option>
+            <select formControlName="weight" name="weight">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['weight']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Age</h3>
-            <select name="age">
-                <option value="young">Young</option>
-                <option value="middle-aged">Middle-Aged</option>
-                <option value="old">Old</option>
+            <select formControlName="age" name="age">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['age']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Hair Color</h3>
-            <select name="hairColor">
-                <option value="black">Black</option>
-                <option value="gray">Gray</option>
-                <option value="brown">Brown</option>
-                <option value="blond">Blond</option>
-                <option value="red">Red</option>
+            <select formControlName="hair_color" name="hair_color">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['hair_color']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Face Feature</h3>
-            <select name="faceFeature">
-                <option value="ears">Ears</option>
-                <option value="eyebrows">Eyebrows</option>
-                <option value="nose">Nose</option>
-                <option value="mouth">Mouth</option>
+            <select formControlName="face_feature" name="face_feature">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['face_feature']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Unique Feature</h3>
-            <select name="uniqueFeature">
-                <option value="scar">Scar</option>
-                <option value="glasses">Glasses</option>
-                <option value="limp">Limp</option>
-                <option value="missingTeeth">Missing Teeth</option>
-                <option value="mole">Mole</option>
+            <select formControlName="unique_feature" name="unique_feature">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['unique_feature']" [value]="option.val">{{option.display}}</option>
+            </select>
+        </section>
+        <section>
+            <h3>Name</h3>
+            <select formControlName="name" name="name">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['name']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Crime Place</h3>
-            <select name="uniqueFeature">
-                <option value="scar">Scar</option>
-                <option value="glasses">Glasses</option>
-                <option value="limp">Limp</option>
-                <option value="missingTeeth">Missing Teeth</option>
-                <option value="mole">Mole</option>
+            <select formControlName="crime_place" name="crime_place">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['crime_place']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
             <h3>Weapon</h3>
-            <select name="uniqueFeature">
-                <option value="scar">Scar</option>
-                <option value="glasses">Glasses</option>
-                <option value="limp">Limp</option>
-                <option value="missingTeeth">Missing Teeth</option>
-                <option value="mole">Mole</option>
+            <select formControlName="weapon" name="weapon">
+                <option value="--------">--------</option>
+                <option *ngFor="let option of caseOptions['weapon']" [value]="option.val">{{option.display}}</option>
             </select>
         </section>
         <section>
@@ -117,6 +105,7 @@
             <h3>Warrant Secured</h3>
             <p>False</p>
         </section>
-        <button class="caseSave">Save</button>
+        <button class="caseSave" (click)="saveCaseDetails()">Save</button>
+    </form>
     </ng-container>
 </div>
