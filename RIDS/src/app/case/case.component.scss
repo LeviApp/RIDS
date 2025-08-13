@@ -1,14 +1,21 @@
-.case {
+@mixin font($w,$s,$c,$h) {
+    font-weight:$w;
+    font-size:$s;
+    color:$c;
+    line-height: $h;
+}
+
+div.case {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
     border-top: 2px solid black;
-    width: 100%;
+    width: 75vw;
     h2 {
         font-size: 2rem;
-        margin-top: 20px;
+        margin: 20px 0;
     }
     button {
         font-size: 4rem;
@@ -38,5 +45,45 @@
     }
     button:hover::after {
         display: flex;
+    }
+    .caseSave {
+        padding: 15px;
+        margin: 25px;
+        align-self: center;
+        background-color: white;
+        border: 2px solid white;
+        @include font(regular, 1.5rem,orange,24px);   
+
+    }
+
+    .caseSave:hover {
+        color: white;
+        background-color: darkorange;
+        border: 2px solid white;
+        cursor: pointer;
+    }
+
+    .caseSave::after {
+        content: "";
+    }
+
+    section {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+        h3 {
+            font-weight: bold;
+            font-size: 1.5rem;
+            width: 50%;
+        }
+        p {
+            width: 50%;
+            font-size: 1.5rem;
+        }
+        select {
+            width: 50%;
+            font-size: 1.5rem;
+            padding: 10px;
+        }
     }
 }
